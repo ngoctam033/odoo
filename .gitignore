@@ -47,3 +47,6 @@ package.json
 /man/
 /share/
 /src/
+
+# bỏ thưc mục odoo-env
+odoo-env/
