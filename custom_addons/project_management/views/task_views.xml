@@ -42,6 +42,14 @@
         </field>
     </record>
 
+    <record id="action_project_task_list" model="ir.actions.act_window">
+        <field name="name">Project Tasks</field>
+        <field name="res_model">project.tasks</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('project_id', '=', active_id)]</field>
+        <field name="context">{'default_project_id': active_id}</field>
+    </record>
+
     <record id="action_task" model="ir.actions.act_window">
         <field name="name">Tasks</field>
         <field name="res_model">project.tasks</field>

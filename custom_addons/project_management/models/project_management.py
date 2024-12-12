@@ -52,6 +52,20 @@ class ProjectManagement(models.Model):
     task_ids = fields.One2many('project.tasks', 
                                'project_id', 
                                string='Tasks')
+    task_count = fields.Integer(string='Number of Tasks', compute='_compute_task_count')
+    
+
+    def action_project_task_list(self):
+        self.ensure_one()
+        action = self.env.ref('project.task.action_project_task_list').read()[0]
+        action['domain'] = [('project_id', '=', self.id)]
+        action['context'] = {'default_project_id': self.id}
+        return action
+    
+    @api.depends('task_ids')
+    def _compute_task_count(self):
+        for project in self:
+            project.task_count = len(project.task_ids)
 
     @api.onchange('start_date', 'end_date')
     def _onchange_date(self):

@@ -102,12 +102,69 @@
         </field>
     </record>
 
+    <!-- Kanban View -->
+    <record id="view_project_management_kanban" model="ir.ui.view">
+        <field name="name">project.management.kanban</field>
+        <field name="model">project.management</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="project_code"/>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="project_manager"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                                <div class="o_project_kanban_main">
+                                    <div class="o_kanban_card_content d-flex justify-content-between align-items-start">
+                                        <div class="o_kanban_primary_left">
+                                            <div class="o_primary">
+                                                <strong><t t-esc="record.name.value"/></strong>
+                                            </div>
+                                            <div class="o_secondary">
+                                                <span><t t-esc="record.state.value"/></span>
+                                            </div>
+                                            <div class="o_secondary">
+                                                <span><t t-esc="record.project_manager.value"/></span>
+                                            </div>
+                                            <div class="o_secondary">
+                                                <span><t t-esc="record.start_date.value"/></span> - <span><t t-esc="record.end_date.value"/></span>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown">
+                                            <a class="dropdown-item" href="#" groups="base.group_system" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" role="menu">
+                                                <a class="dropdown-item" href="#" type="edit">Edit</a>
+                                                <a class="dropdown-item" href="#" type="open">View</a>
+                                                <a class="dropdown-item" href="#" type="delete">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="o_project_kanban_boxes">
+                                    <a class="o_project_kanban_box" name="%(action_project_task_list)d" type="action">
+                                        <div>
+                                            <field name="task_count"/> Tasks
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+            </kanban>
+        </field>
+    </record>
+
     <!-- Action -->
     <record id="action_project_management" model="ir.actions.act_window">
         <field name="name">Project Management</field>
         <field name="res_model">project.management</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_project_management_tree"/>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_project_management_kanban"/>
     </record>
 
     <!-- Menu Item -->
