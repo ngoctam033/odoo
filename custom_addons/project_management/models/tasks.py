@@ -30,7 +30,7 @@ class Task(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('task_code', 'New') == 'New':
-            vals['task_code'] = self.env['ir.sequence'].next_by_code('project.tasks') or 'New'
+            vals['task_code'] = self.env['ir.sequence'].next_by_code('project.task') or 'New'
         return super(Task, self).create(vals)
 
     @api.constrains('dev_id', 'dev_deadline', 'qc_id', 'qc_deadline')

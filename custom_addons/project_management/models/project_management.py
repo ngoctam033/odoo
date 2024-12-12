@@ -47,6 +47,11 @@ class ProjectManagement(models.Model):
     sprint_ids = fields.One2many('project.sprint', 
                                  'project_id', 
                                  string='Sprints')
+    
+    # add task_ids field
+    task_ids = fields.One2many('project.tasks', 
+                               'project_id', 
+                               string='Tasks')
 
     @api.onchange('start_date', 'end_date')
     def _onchange_date(self):
@@ -66,25 +71,27 @@ class ProjectManagement(models.Model):
 
     @api.onchange('name')
     def _onchange_name(self):
-        if self.name:
-            # Tìm tất cả các bản ghi có cùng tên, không phân biệt hoa thường
-            duplicate_count = self.search_count([('name', '=ilike', self.name)])
-            if duplicate_count > 0:
-                return {
-                    'warning': {
-                        'title': _('Duplicate Name Warning'),
-                        'message': _('The project name "{}" already exists. Please choose a different name.').format(self.name),
+        for record in self:
+            if record.name:
+                # Find all records with the same name
+                duplicate_count = self.search_count([('name', '=ilike', record.name)])
+                print('duplicate_count ', duplicate_count)
+                if duplicate_count > 0:
+                    return {
+                        'warning': {
+                            'title': _('Duplicate Name Warning onchange'),
+                            'message': _('The property type name "{}" already exists. Please choose a different name.').format(record.name),
+                        }
                     }
-                }
 
     @api.constrains('name')
     def _check_unique_name(self):
         for record in self:
             if record.name:
-                # Tìm tất cả các bản ghi có cùng tên, không phân biệt hoa thường
+                # find all records with the same name(not case sensitive)
                 duplicate_count = self.search_count([('name', '=ilike', record.name)])
-                if duplicate_count > 0:
-                    raise ValidationError(_('The project name "{}" already exists. Please choose a different name.').format(record.name))
+                if duplicate_count > 1:
+                    raise ValidationError(_('The property type name "{}" already exists. Please choose a different name.').format(record.name))
                     
     @api.model
     def default_get(self, fields):

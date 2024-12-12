@@ -16,6 +16,7 @@ class Sprint(models.Model):
         ('open', 'Open'),
         ('close', 'Close'),
     ], string='Status', default='draft', tracking=True)
+    task_ids = fields.One2many('project.tasks', 'sprint_id', string='Tasks')
     
     @api.onchange('start_date', 'end_date')
     def _onchange_date(self):

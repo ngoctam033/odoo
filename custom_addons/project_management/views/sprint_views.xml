@@ -14,6 +14,35 @@
                         <field name="end_date"/>
                         <field name="state"/>
                     </group>
+                    <notebook>
+                        <page string="Tasks">
+                            <field name="task_ids">
+                                <tree string="Tasks">
+                                    <field name="task_code"/>
+                                    <field name="name"/>
+                                    <field name="dev_id"/>
+                                    <field name="qc_id"/>
+                                    <field name="task_type"/>
+                                    <field name="dev_deadline"/>
+                                    <field name="qc_deadline"/>
+                                    <field name="state"/>
+                                </tree>
+                                <form string="Task">
+                                    <group>
+                                        <field name="task_code"/>
+                                        <field name="name"/>
+                                        <field name="dev_id"/>
+                                        <field name="qc_id"/>
+                                        <field name="task_type"/>
+                                        <field name="dev_deadline"/>
+                                        <field name="qc_deadline"/>
+                                        <field name="state"/>
+                                        <field name="description"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
