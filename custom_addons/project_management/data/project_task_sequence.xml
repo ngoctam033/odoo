@@ -3,7 +3,7 @@
     <data noupdate="1">
         <record id="seq_project_task" model="ir.sequence">
             <field name="name">Project Task</field>
-            <field name="code">project.task</field>
+            <field name="code">project.tasks</field>
             <field name="prefix">T</field>
             <field name="padding">5</field>
             <field name="number_increment">1</field>

@@ -2,7 +2,7 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 class Task(models.Model):
-    _name = 'project.task'
+    _name = 'project.tasks'
     _description = 'Project Task'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
@@ -30,7 +30,7 @@ class Task(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('task_code', 'New') == 'New':
-            vals['task_code'] = self.env['ir.sequence'].next_by_code('project.task') or 'New'
+            vals['task_code'] = self.env['ir.sequence'].next_by_code('project.tasks') or 'New'
         return super(Task, self).create(vals)
 
     @api.constrains('dev_id', 'dev_deadline', 'qc_id', 'qc_deadline')

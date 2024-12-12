@@ -1,0 +1,53 @@
+<odoo>
+    <record id="view_task_form" model="ir.ui.view">
+        <field name="name">project.tasks.form</field>
+        <field name="model">project.tasks</field>
+        <field name="arch" type="xml">
+            <form string="Task">
+                <sheet>
+                    <group>
+                        <field name="task_code"/>
+                        <field name="name"/>
+                        <field name="project_id"/>
+                        <field name="sprint_id"/>
+                        <field name="dev_id"/>
+                        <field name="qc_id"/>
+                        <field name="task_type"/>
+                        <field name="dev_deadline"/>
+                        <field name="qc_deadline"/>
+                        <field name="state"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_task_tree" model="ir.ui.view">
+        <field name="name">project.tasks.tree</field>
+        <field name="model">project.tasks</field>
+        <field name="arch" type="xml">
+            <tree string="Tasks">
+                <field name="task_code"/>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="sprint_id"/>
+                <field name="dev_id"/>
+                <field name="qc_id"/>
+                <field name="task_type"/>
+                <field name="dev_deadline"/>
+                <field name="qc_deadline"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_task" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">project.tasks</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_project_management_root" name="Project Management" sequence="10"/>
+    <menuitem id="menu_task" name="Tasks" parent="menu_project_management_root" action="action_task" sequence="30"/>
+</odoo>

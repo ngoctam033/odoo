@@ -22,6 +22,7 @@
     # views
     'views/project_management_views.xml',
     'views/sprint_views.xml',
+    'views/task_views.xml',
   ],
   'demo': [],
   'qweb': [],
