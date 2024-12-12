@@ -33,6 +33,26 @@
                                 <field name="description"/>
                             </group>
                         </page>
+                        <page string="Sprints">
+                            <field name="sprint_ids">
+                                <tree string="Sprints">
+                                    <field name="sprint_code"/>
+                                    <field name="name"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="state"/>
+                                </tree>
+                                <form string="Sprint">
+                                    <group>
+                                        <field name="sprint_code"/>
+                                        <field name="name"/>
+                                        <field name="start_date"/>
+                                        <field name="end_date"/>
+                                        <field name="state"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
