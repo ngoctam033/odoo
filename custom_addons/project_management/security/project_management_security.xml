@@ -1,0 +1,22 @@
+<!-- security/project_management_security.xml -->
+<odoo>
+    <data noupdate="1">
+        <!-- Nhóm quản trị dự án -->
+        <record id="group_project_management_admin" model="res.groups">
+            <field name="name">Project Management Admin</field>
+            <field name="category_id" ref="base.module_category_project_management"/>
+        </record>
+
+        <!-- Nhóm quản lý dự án -->
+        <record id="group_project_management_manager" model="res.groups">
+            <field name="name">Project Management Manager</field>
+            <field name="category_id" ref="base.module_category_project_management"/>
+        </record>
+
+        <!-- Nhóm thành viên dự án -->
+        <record id="group_project_management_member" model="res.groups">
+            <field name="name">Project Management Member</field>
+            <field name="category_id" ref="base.module_category_project_management"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="property_list_template" name="Property List">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Danh Sách Bất Động Sản</h1>
+
+               <!-- Form Tìm Kiếm -->
+                <form method="GET" action="/estate/properties" class="mb-4">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <input type="text" name="name" class="form-control" placeholder="Tên BĐS" t-att-value="search_params.get('name')"/>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="text" name="code" class="form-control" placeholder="Mã BĐS" t-att-value="search_params.get('code')"/>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <select name="state" class="form-control">
+                                <option value="">Tất cả trạng thái</option>
+                                <option value="new" t-att-selected="search_params.get('state') == 'new'">Mới</option>
+                                <option value="sold" t-att-selected="search_params.get('state') == 'sold'">Đang bán</option>
+                                <option value="offer_received" t-att-selected="search_params.get('state') == 'offer_received'">Đã nhận đề nghị</option>
+                                <option value="offer_accepted" t-att-selected="search_params.get('state') == 'offer_accepted'">Đã chấp nhận đề nghị</option>
+                                <option value="canceled" t-att-selected="search_params.get('state') == 'canceled'">Đã hủy</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="number" name="min_price" class="form-control" placeholder="Giá Tối Thiểu" t-att-value="search_params.get('min_price')"/>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="number" name="max_price" class="form-control" placeholder="Giá Tối Đa" t-att-value="search_params.get('max_price')"/>
+                        </div>
+                        <div class="form-group col-md-1">
+                            <button type="submit" class="btn btn-primary btn-block">Tìm</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Danh sách bất động sản -->
+                <div class="row">
+                    <t t-foreach="properties" t-as="property">
+                        <div class="col-md-3 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><t t-esc="property.name"/></h5>
+                                    <p class="card-text">
+                                        <strong>Mã:</strong> <t t-esc="property.code"/><br/>
+                                        <strong>Giá:</strong> <t t-esc="property.expected_price"/> <t t-esc="property.currency_id.symbol"/><br/>
+                                        <strong>Trạng Thái:</strong> <t t-esc="property.state"/>
+                                    </p>
+                                    <a t-attf-href="/estate/property_detail?id={{property.id}}" class="btn btn-primary">Chi Tiết</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+
+                <!-- Phân trang -->
+                <t t-if="pager">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <t t-if="pager['page']['num'] > 1">
+                                <li class="page-item">
+                                    <a class="page-link" t-att-href="pager['page_first']['url']" aria-label="First">
+                                        <span aria-hidden="true">&#171;</span>
+                                    </a>
+                                </li>
+                            </t>
+                            <!-- Trang trước -->
+                            <t t-if="pager['page']['num'] > 1">
+                                <li class="page-item">
+                                    <a class="page-link" t-att-href="pager['page_previous']['url']" aria-label="Previous">
+                                        <span aria-hidden="true">&#8249;</span> 
+                                        Trang trước
+                                    </a>
+                                </li>
+                            </t>
+
+                            <!-- Các trang số -->
+                            <t t-foreach="pager['pages']" t-as="page">
+                                <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                    <a class="page-link" t-att-href="page['url']">
+                                        <t t-esc="page['num']"/>
+                                    </a>
+                                </li>
+                            </t>
+
+                            <t>
+                                <li class="page-item">
+                                    <a class="page-link" t-att-href="pager['page_next']['url']" aria-label="Previous">
+                                        <span aria-hidden="true">&#8250;</span> 
+                                        Trang sau
+                                    </a>
+                                </li>
+                            </t>
+                            <!-- Trang cuối cùng -->
+                            <t>
+                                <li class="page-item">
+                                    <a class="page-link" t-att-href="pager['page_end']['url']" aria-label="Last">
+                                        Trang cuối
+                                        <span aria-hidden="true">&#187;</span> <!-- » -->
+                                    </a>
+                                </li>
+                            </t>
+                        </ul>
+                    </nav>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <template id="property_detail_template" name="Property Detail">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <div class="card mb-4">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <img src='https://lirp.cdn-website.com/bf4fe880/dms3rep/multi/opt/estate+vs+a+house+-+Ranger+Ridge-1920w.jpeg' class="card-img" alt="Property Image"/>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h2 class="card-title mb-4"><t t-esc="property.name"/></h2>
+                                <h4 class="text-primary mb-3">
+                                    <t t-esc="property.expected_price"/> <t t-esc="property.currency_id.symbol"/>
+                                </h4>
+                                <p class="card-text">
+                                    <strong>Code:</strong> <t t-esc="property.code"/><br/>
+                                    <strong>Status:</strong> <t t-esc="property.state"/><br/>
+                                    <strong>Bedrooms:</strong> <t t-esc="property.bedrooms"/><br/>
+                                    <strong>Living Area:</strong> <t t-esc="property.living_area"/> m²<br/>
+                                    <strong>Garden:</strong> <t t-esc="property.garden"/><br/>
+                                    <strong>Garden Area:</strong> <t t-esc="property.garden_area"/> m²<br/>
+                                    <strong>Garden Orientation:</strong> <t t-esc="property.garden_orientation"/>
+                                </p>
+                                <p class="card-text"><strong>Description:</strong></p>
+                                <p class="card-text"><t t-esc="property.description"/></p>
+                                <a href="#" class="btn btn-primary">Liên hệ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

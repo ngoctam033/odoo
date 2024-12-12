@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Record 1 -->
+        <record id="property_1" model="estate.property">
+            <field name="name">Luxury Villa</field>
+            <field name="description">A beautiful luxury villa with a large garden and garage.</field>
+            <field name="postcode">12345</field>
+            <field name="expected_price">1000000</field>
+            <field name="selling_price">950000</field>
+            <field name="living_area">400</field>
+            <field name="facades">4</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">200</field>
+            <field name="garden_orientation">south</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">new</field>
+        </record>
+
+        <!-- Record 2 -->
+        <record id="property_2" model="estate.property">
+            <field name="name">Modern Apartment</field>
+            <field name="description">A modern apartment located in the city center.</field>
+            <field name="postcode">54321</field>
+            <field name="expected_price">300000</field>
+            <field name="selling_price">290000</field>
+            <field name="living_area">120</field>
+            <field name="facades">1</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">north</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">offer_received</field>
+        </record>
+
+        <!-- Record 3 -->
+        <record id="property_3" model="estate.property">
+            <field name="name">Cozy Cottage</field>
+            <field name="description">A cozy cottage in the countryside.</field>
+            <field name="postcode">67890</field>
+            <field name="expected_price">200000</field>
+            <field name="selling_price">195000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">80</field>
+            <field name="facades">2</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">150</field>
+            <field name="garden_orientation">east</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">offer_accepted</field>
+        </record>
+
+        <!-- Record 4 -->
+        <record id="property_4" model="estate.property">
+            <field name="name">Beach House</field>
+            <field name="description">A beautiful beach house with stunning ocean views.</field>
+            <field name="postcode">11223</field>
+            <field name="expected_price">750000</field>
+            <field name="selling_price">700000</field>
+            <field name="bedrooms">4</field>
+            <field name="living_area">300</field>
+            <field name="facades">3</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">100</field>
+            <field name="garden_orientation">west</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">sold</field>
+        </record>
+
+        <!-- Record 5 -->
+        <record id="property_5" model="estate.property">
+            <field name="name">Mountain Cabin</field>
+            <field name="description">A rustic cabin in the mountains.</field>
+            <field name="postcode">33445</field>
+            <field name="expected_price">500000</field>
+            <field name="selling_price">480000</field>
+            <field name="bedrooms">3</field>
+            <field name="living_area">150</field>
+            <field name="facades">2</field>
+            <field name="garage">False</field>
+            <field name="garden">True</field>
+            <field name="garden_area">200</field>
+            <field name="garden_orientation">north</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">canceled</field>
+        </record>
+
+        <!-- Record 6 -->
+        <record id="property_6" model="estate.property">
+            <field name="name">Suburban House</field>
+            <field name="description">A spacious house in a quiet suburban neighborhood.</field>
+            <field name="postcode">55667</field>
+            <field name="expected_price">600000</field>
+            <field name="selling_price">580000</field>
+            <field name="bedrooms">4</field>
+            <field name="living_area">250</field>
+            <field name="facades">3</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">180</field>
+            <field name="garden_orientation">south</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">new</field>
+        </record>
+
+        <!-- Record 7 -->
+        <record id="property_7" model="estate.property">
+            <field name="name">Downtown Loft</field>
+            <field name="description">A stylish loft in the heart of downtown.</field>
+            <field name="postcode">77889</field>
+            <field name="expected_price">450000</field>
+            <field name="selling_price">430000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">100</field>
+            <field name="facades">1</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">east</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">offer_received</field>
+        </record>
+
+        <!-- Record 8 -->
+        <record id="property_8" model="estate.property">
+            <field name="name">Country Estate</field>
+            <field name="description">A large estate in the countryside with extensive grounds.</field>
+            <field name="postcode">99000</field>
+            <field name="expected_price">1200000</field>
+            <field name="selling_price">1150000</field>
+            <field name="bedrooms">6</field>
+            <field name="living_area">500</field>
+            <field name="facades">4</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">300</field>
+            <field name="garden_orientation">west</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">offer_accepted</field>
+        </record>
+
+        <!-- Record 9 -->
+        <record id="property_9" model="estate.property">
+            <field name="name">Urban Condo</field>
+            <field name="description">A modern condo in a bustling urban area.</field>
+            <field name="postcode">11122</field>
+            <field name="expected_price">350000</field>
+            <field name="selling_price">340000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">90</field>
+            <field name="facades">1</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">north</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">sold</field>
+        </record>
+
+        <!-- Record 10 -->
+        <record id="property_10" model="estate.property">
+            <field name="name">Historic Mansion</field>
+            <field name="description">A historic mansion with a rich history and beautiful architecture.</field>
+            <field name="postcode">33344</field>
+            <field name="expected_price">2000000</field>
+            <field name="selling_price">1900000</field>
+            <field name="bedrooms">8</field>
+            <field name="living_area">600</field>
+            <field name="facades">5</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">400</field>
+            <field name="garden_orientation">south</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">canceled</field>
+        </record>
+
+        <!-- Record 11 -->
+        <record id="property_11" model="estate.property">
+            <field name="name">Penthouse Suite 123</field>
+            <field name="description">A luxurious penthouse suite with panoramic city views.</field>
+            <field name="postcode">55566</field>
+            <field name="expected_price">2500000</field>
+            <field name="selling_price">2400000</field>
+            <field name="bedrooms">4</field>
+            <field name="living_area">350</field>
+            <field name="facades">3</field>
+            <field name="garage">True</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">west</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">new</field>
+        </record>
+
+        <!-- record 12 -->
+        <record id="property_12" model="estate.property">
+            <field name="name">City Apartment 456</field>
+            <field name="description">A modern apartment in a vibrant city neighborhood.</field>
+            <field name="postcode">77788</field>
+            <field name="expected_price">400000</field>
+            <field name="selling_price">390000</field>
+            <field name="bedrooms">3</field>
+            <field name="living_area">150</field>
+            <field name="facades">2</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">north</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">offer_received</field>
+        </record>
+
+        <!-- record 13 -->
+        <record id="property_13" model="estate.property">
+            <field name="name">Country Cottage 789</field>
+            <field name="description">A charming cottage in a peaceful rural setting.</field>
+            <field name="postcode">99900</field>
+            <field name="expected_price">150000</field>
+            <field name="selling_price">145000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">100</field>
+            <field name="facades">2</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">100</field>
+            <field name="garden_orientation">east</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">offer_accepted</field>
+        </record>
+
+        <!-- record 14 -->
+        <record id="property_14" model="estate.property">
+            <field name="name">Beachfront Villa 101</field>
+            <field name="description">A stunning beachfront villa with breathtaking ocean views.</field>
+            <field name="postcode">11222</field>
+            <field name="expected_price">1000000</field>
+            <field name="selling_price">950000</field>
+            <field name="bedrooms">4</field>
+            <field name="living_area">300</field>
+            <field name="facades">3</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">200</field>
+            <field name="garden_orientation">south</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">sold</field>
+        </record>
+
+        <!-- record 15 -->
+        <record id="property_15" model="estate.property">
+            <field name="name">Mountain Retreat 202</field>
+            <field name="description">A peaceful mountain retreat with stunning views of the surrounding landscape.</field>
+            <field name="postcode">33445</field>
+            <field name="expected_price">500000</field>
+            <field name="selling_price">480000</field>
+            <field name="bedrooms">3</field>
+            <field name="living_area">150</field>
+            <field name="facades">2</field>
+            <field name="garage">False</field>
+            <field name="garden">True</field>
+            <field name="garden_area">200</field>
+            <field name="garden_orientation">north</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">canceled</field>
+        </record>
+
+        <!-- record 16 -->
+        <record id="property_16" model="estate.property">
+            <field name="name">Suburban Home 303</field>
+            <field name="description">A comfortable home in a quiet suburban neighborhood.</field>
+            <field name="postcode">55667</field>
+            <field name="expected_price">600000</field>
+            <field name="selling_price">580000</field>
+            <field name="bedrooms">4</field>
+            <field name="living_area">250</field>
+            <field name="facades">3</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">180</field>
+            <field name="garden_orientation">south</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">new</field>
+        </record>
+
+        <!-- record 17 -->
+        <record id="property_17" model="estate.property">
+            <field name="name">Downtown Condo 404</field>
+            <field name="description">A modern condo in the heart of downtown.</field>
+            <field name="postcode">77889</field>
+            <field name="expected_price">450000</field>
+            <field name="selling_price">430000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">100</field>
+            <field name="facades">1</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">east</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">offer_received</field>
+        </record>
+
+        <!-- record 18 -->
+        <record id="property_18" model="estate.property">
+            <field name="name">Country Estate 505</field>
+            <field name="description">A large estate in the countryside with extensive grounds.</field>
+            <field name="postcode">99000</field>
+            <field name="expected_price">1200000</field>
+            <field name="selling_price">1150000</field>
+            <field name="bedrooms">6</field>
+            <field name="living_area">500</field>
+            <field name="facades">4</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">300</field>
+            <field name="garden_orientation">west</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">offer_accepted</field>
+        </record>
+
+        <!-- record 19 -->
+        <record id="property_19" model="estate.property">
+            <field name="name">Urban Loft 606</field>
+            <field name="description">A stylish loft in a bustling urban area.</field>
+            <field name="postcode">11122</field>
+            <field name="expected_price">350000</field>
+            <field name="selling_price">340000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">90</field>
+            <field name="facades">1</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">north</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">sold</field>
+        </record>
+
+        <!-- record 20 -->
+        <record id="property_20" model="estate.property">
+            <field name="name">Historic Mansion 707</field>
+            <field name="description">A historic mansion with a rich history and beautiful architecture.</field>
+            <field name="postcode">33344</field>
+            <field name="expected_price">2000000</field>
+            <field name="selling_price">1900000</field>
+            <field name="bedrooms">8</field>
+            <field name="living_area">600</field>
+            <field name="facades">5</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">400</field>
+            <field name="garden_orientation">south</field>
+            <field name="currency_id" ref="base.VND"/>
+            <field name="active">True</field>
+            <field name="state">canceled</field>
+        </record>
+    </data>
+</odoo>

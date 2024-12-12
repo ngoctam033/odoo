@@ -1,0 +1,43 @@
+                        <!-- Trang đầu tiên -->
+                        <t t-if="pager['page']['num'] > 1">
+                            <li class="page-item">
+                                <a class="page-link" t-att-href="'/estate/properties?page=1'" aria-label="First">
+                                    <span aria-hidden="true">&#171;</span> <!-- « -->
+                                </a>
+                            </li>
+                        </t>
+                        <!-- Trang trước -->
+                        <t t-if="pager['page']['num'] > 1">
+                            <li class="page-item">
+                                <a class="page-link" t-att-href="" aria-label="Previous">
+                                    <span aria-hidden="true">&#8249;</span> <!-- ‹ -->
+                                    Trang trước
+                                </a>
+                            </li>
+                        </t>
+                        <!-- Các trang số -->
+                        <t t-foreach="pager['pages']" t-as="page">
+                            <li t-attf-class="page-item #{'active' if page['number'] == pager['page']}">
+                                <a class="page-link" t-att-href="">
+                                    <t t-esc="page['number']"/>
+                                </a>
+                            </li>
+                        </t>
+                        <!-- Trang sau -->
+                        <t t-if="pager['page']['num'] < pager['page_count']">
+                            <li class="page-item">
+                                <a class="page-link" t-att-href="" aria-label="Next">
+                                    Trang sau
+                                    <span aria-hidden="true">&#8250;</span> <!-- › -->
+                                </a>
+                            </li>
+                        </t>
+                        <!-- Trang cuối cùng -->
+                        <t t-if="pager['page']['num'] < pager['page_count']">
+                            <li class="page-item">
+                                <a class="page-link" t-att-href="'" aria-label="Last">
+                                    Trang cuối
+                                    <span aria-hidden="true">&#187;</span> <!-- » -->
+                                </a>
+                            </li>
+                        </t>

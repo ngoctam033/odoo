@@ -1,0 +1,77 @@
+<odoo>
+    <template id="assets_backend" name="estate assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <style>
+            
+                /* Tăng kích thước chữ cho tiêu đề */
+                .estate-form-label {
+                    font-size: 1.5em;
+                    font-weight: bold;
+                }
+
+                /* Tăng kích thước chữ cho trường name */
+                .estate-form-field {
+                    font-size: 1.2em;
+                }
+
+                /* Đặt khoảng cách giữa các nhóm trường */
+                .estate-form-group {
+                    margin-bottom: 20px;
+                }
+
+                /* Đặt khoảng cách giữa các trường trong nhóm inline */
+                .estate-form-group-inline .o_group {
+                    margin-right: 20px;
+                }
+
+                /* Đặt màu nền cho các trang trong notebook */
+                .o_notebook .o_page {
+                    background-color: #f9f9f9;
+                    padding: 20px;
+                    border-radius: 5px;
+                }
+
+                /* Đặt màu nền cho các nút hành động */
+                .oe_highlight {
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                .oe_highlight:hover {
+                    background-color: #0056b3;
+                }
+
+                /* Đặt màu nền cho các nút trong tree view */
+                .btn-primary {
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                .btn-primary:hover {
+                    background-color: #218838;
+                }
+
+                .btn-danger {
+                    background-color: #dc3545;
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                .btn-danger:hover {
+                    background-color: #c82333;
+                }
+            </style>
+        </xpath>
+    </template>
+</odoo>

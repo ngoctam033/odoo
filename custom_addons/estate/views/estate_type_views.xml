@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- tree view -->
+        <record id="view_estate_property_type_tree" model="ir.ui.view">
+            <field name="name">estate.property.type.tree</field>
+            <field name="model">estate.property.type</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <!-- offer_count -->
+                    <field name="offer_count"/>
+                    <button name="%(action_estate_offer_from_type)d" type="action" string="Open Offer" class="oe_highlight" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Actions -->
+        <record id="action_estate_type" model="ir.actions.act_window">
+            <field name="name">Type</field>
+            <field name="res_model">estate.property.type</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create RecordS
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

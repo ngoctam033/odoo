@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menu -->
+        <menuitem id="menu_estate" name="Estate" sequence="10"/>
+        <menuitem id="menu_estate_properties" name="Estate" parent="menu_estate" action="action_estate_property" sequence="20"/>
+        <!-- create menu advertisement -->
+        <menuitem id="menu_estate_advertisement" name="Advertisement" parent="menu_estate" sequence="30"/>
+        <menuitem id="menu_estate_configuration" name="Configuration" parent="menu_estate" sequence="40"/>
+        <!-- add Reporting -->
+        <menuitem id="menu_reporting" name="Reporting" parent="menu_estate" sequence="50"/>
+        <!-- menu Property Offer -->
+        <menuitem id="menu_estate_property_offer" name="Property Offer" parent="menu_estate_advertisement" sequence="60" action="action_estate_offer"/>
+        <!-- menu Property Type -->
+        <menuitem id="menu_estate_property_type" name="Property Type" parent="menu_estate_configuration" sequence="70" action="action_estate_type"/>
+        <!-- menu Property Tag -->
+        <menuitem id="menu_estate_property_tag" name="Property Tag" parent="menu_estate_configuration" sequence="80" action="action_estate_tag"/>
+        
+        <!-- Thêm menu con Buyer Offer Report vào Reporting -->
+        <menuitem id="menu_buyer_offer_report" name="Buyer Offer Report" parent="menu_reporting" sequence="90" action="action_buyer_offer_report"/>
+        <menuitem id="menu_buyer_offer_report_xlsx" name="Buyer Offer Report XLSX" parent="menu_reporting" sequence="20" action="action_buyer_offer_report_xlsx"/>
+    </data>
+</odoo>

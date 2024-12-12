@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+project_management_admin,project_management.admin,model_project_management,base.group_system,1,1,1,1
+project_management_manager,project_management.manager,model_project_management,base.group_user,1,1,1,0
+project_management_member,project_management.member,model_project_management,base.group_public,1,0,0,0
