@@ -17,7 +17,7 @@
     # sequence
     'data/project_management_sequence.xml',
     'data/project_sprint_sequence.xml',
-    # 'data/project_task_sequence.xml',
+    'data/project_task_sequence.xml',
 
     # views
     'views/project_management_views.xml',

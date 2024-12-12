@@ -42,6 +42,11 @@ class ProjectManagement(models.Model):
     # Mô tả dự án
     description = fields.Text(string='Description', 
                               tracking=True)
+    
+    # Tạo quan hệ giữa bảng project.management và bảng project.sprint
+    sprint_ids = fields.One2many('project.sprint', 
+                                 'project_id', 
+                                 string='Sprints')
 
     @api.onchange('start_date', 'end_date')
     def _onchange_date(self):
