@@ -6,7 +6,7 @@ class Task(models.Model):
     _description = 'Project Task'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    task_code = fields.Char(string='Task Code', readonly=True, default='New')
+    task_code = fields.Char(string='Task Code', readonly=True)
     name = fields.Char(string='Task Name', required=True)
     project_id = fields.Many2one('project.management', string='Project', required=True, ondelete='cascade')
     sprint_id = fields.Many2one('project.sprint', string='Sprint', ondelete='set null')
@@ -30,8 +30,15 @@ class Task(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('task_code', 'New') == 'New':
-            vals['task_code'] = self.env['ir.sequence'].next_by_code('project.task') or 'New'
+            vals['task_code'] = self.env['ir.sequence'].next_by_code('project.tasks') or 'New'
         return super(Task, self).create(vals)
+    
+    @api.model
+    def default_get(self, fields):
+        res = super(Task, self).default_get(fields)
+        if 'task_code' in fields:
+            res['task_code'] = self.env['ir.sequence'].next_by_code('project.tasks') or 'New'
+        return res
 
     @api.constrains('dev_id', 'dev_deadline', 'qc_id', 'qc_deadline')
     def _check_deadlines(self):

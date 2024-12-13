@@ -1,0 +1,41 @@
+<odoo>
+    <!-- Task Type Form View -->
+    <record id="view_task_type_form" model="ir.ui.view">
+        <field name="name">project.tasks.type.form</field>
+        <field name="model">project.tasks.type</field>
+        <field name="arch" type="xml">
+            <form string="Task Type">
+                <sheet>
+                    <group>
+                        <field name="type_code"/>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Task Type Tree View -->
+    <record id="view_task_type_tree" model="ir.ui.view">
+        <field name="name">project.tasks.type.tree</field>
+        <field name="model">project.tasks.type</field>
+        <field name="arch" type="xml">
+            <tree string="Task Types">
+                <field name="type_code"/>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Task Type Action -->
+    <record id="action_task_type" model="ir.actions.act_window">
+        <field name="name">Task Types</field>
+        <field name="res_model">project.tasks.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Task Type Menu Item -->
+    <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_root" action="action_task_type" sequence="40"/>
+</odoo>
