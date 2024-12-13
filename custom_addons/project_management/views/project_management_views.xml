@@ -8,10 +8,14 @@
         <field name="arch" type="xml">
             <form string="Project Management">
                 <sheet>
+                    <header>
+                        <button name="action_view_tasks" string="View Tasks" type="object" class="btn btn-primary"/>
+                    </header>
                     <group>
                         <field name="project_code"/>
                         <field name="name"/>
                         <field name="state"/>
+                        <field name="task_count"/>
                     </group>
                     <notebook>
                         <page string="Dates">
@@ -137,8 +141,8 @@
                                                 <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"></i>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" role="menu">
-                                                <a class="dropdown-item" href="#" type="edit">Edit</a>
                                                 <a class="dropdown-item" href="#" type="open">View</a>
+                                                <a class="dropdown-item" href="#" type="edit">Edit</a>
                                                 <a class="dropdown-item" href="#" type="delete">Delete</a>
                                             </div>
                                         </div>

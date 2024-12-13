@@ -31,7 +31,9 @@
     'views/project_management_views.xml',
   ],
   'demo': [],
-  'qweb': [],
+  'qweb': [
+      'static/src/xml/*.xml',
+  ],
   "license": "AGPL-3",
   'installable': True,
   'auto_install': False,
