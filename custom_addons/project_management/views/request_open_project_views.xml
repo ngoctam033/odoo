@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Request Open Project Form View -->
     <record id="view_request_open_project_form" model="ir.ui.view">
@@ -43,6 +44,4 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Request Open Project Menu Item -->
-    <menuitem id="menu_request_open_project" name="Request Open Projects" parent="menu_project_management_root" action="action_request_open_project" sequence="50"/>
 </odoo>

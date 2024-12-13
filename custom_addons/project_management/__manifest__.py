@@ -20,13 +20,15 @@
     'data/project_management_sequence.xml',
     'data/project_task_type_sequence.xml',
     'data/request_open_project_sequence.xml',
+    'data/request_close_project_sequence.xml',
 
     # views
-    'views/project_management_views.xml',
     'views/sprint_views.xml',
     'views/task_views.xml',
     'views/type_task_views.xml',
     'views/request_open_project_views.xml',
+    'views/request_close_project_views.xml',
+    'views/project_management_views.xml',
   ],
   'demo': [],
   'qweb': [],

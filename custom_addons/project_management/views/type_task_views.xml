@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Task Type Form View -->
     <record id="view_task_type_form" model="ir.ui.view">
@@ -35,7 +36,4 @@
         <field name="res_model">project.tasks.type</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-    <!-- Task Type Menu Item -->
-    <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_root" action="action_task_type" sequence="40"/>
 </odoo>

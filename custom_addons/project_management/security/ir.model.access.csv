@@ -8,3 +8,12 @@ sprint_management_member,sprint_management.member,model_project_sprint,base.grou
 task_management_admin,task_management.admin,model_project_tasks,base.group_system,1,1,1,1
 task_management_manager,task_management.manager,model_project_tasks,base.group_user,1,1,1,0
 task_management_member,task_management.member,model_project_tasks,base.group_public,1,0,0,0
+task_type_management_admin,task_type_management.admin,model_project_tasks_type,base.group_system,1,1,1,1
+task_type_management_manager,task_type_management.manager,model_project_tasks_type,base.group_user,1,1,1,0
+task_type_management_member,task_type_management.member,model_project_tasks_type,base.group_public,1,0,0,0
+request_open_project_admin,request_open_project.admin,model_project_management_request_open_project,base.group_system,1,1,1,1
+request_open_project_manager,request_open_project.manager,model_project_management_request_open_project,base.group_user,1,1,1,0
+request_open_project_member,request_open_project.member,model_project_management_request_open_project,base.group_public,1,0,0,0
+request_close_project_admin,request_close_project.admin,model_request_close_project,base.group_system,1,1,1,1
+request_close_project_manager,request_close_project.manager,model_request_close_project,base.group_user,1,1,1,0
+request_close_project_member,request_close_project.member,model_request_close_project,base.group_public,1,0,0,0

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <!-- views/project_management_views.xml -->
 <odoo>
     <!-- Form View -->
@@ -170,4 +169,8 @@
     <!-- Menu Item -->
     <menuitem id="menu_project_management_root" name="Project Management" sequence="10"/>
     <menuitem id="menu_project_management" name="Projects" parent="menu_project_management_root" action="action_project_management" sequence="20"/>
+    <menuitem id="menu_sprint" name="Sprints" parent="menu_project_management_root" action="action_sprint" sequence="30"/>
+    <menuitem id="menu_task" name="Tasks" parent="menu_project_management_root" action="action_task" sequence="40"/>
+    <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_root" action="action_task_type" sequence="50"/>
+    <menuitem id="menu_request_open_project" name="Request Open Projects" parent="menu_project_management_root" action="action_request_open_project" sequence="60"/>
 </odoo>

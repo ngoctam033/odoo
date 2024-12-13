@@ -1,0 +1,11 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_request_close_project" model="ir.sequence">
+            <field name="name">Request Close Project Sequence</field>
+            <field name="code">request.close.project</field>
+            <field name="prefix">RCP</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+        </record>
+    </data>
+</odoo>

@@ -68,7 +68,4 @@
         <field name="res_model">project.sprint</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-    <menuitem id="menu_project_management_root" name="Project Management" sequence="10"/>
-    <menuitem id="menu_sprint" name="Sprints" parent="menu_project_management_root" action="action_sprint" sequence="20"/>
 </odoo>
