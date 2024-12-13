@@ -1,0 +1,11 @@
+<odoo>
+    <data noupdate="1">
+        <record id="seq_request_open_project" model="ir.sequence">
+            <field name="name">Request Open Project Sequence</field>
+            <field name="code">request.open.project</field>
+            <field name="prefix">ROP</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+        </record>
+    </data>
+</odoo>

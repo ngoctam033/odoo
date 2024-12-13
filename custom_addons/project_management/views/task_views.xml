@@ -56,6 +56,5 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_project_management_root" name="Project Management" sequence="10"/>
     <menuitem id="menu_task" name="Tasks" parent="menu_project_management_root" action="action_task" sequence="30"/>
 </odoo>

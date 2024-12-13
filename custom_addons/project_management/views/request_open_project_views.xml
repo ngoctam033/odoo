@@ -1,0 +1,48 @@
+<odoo>
+    <!-- Request Open Project Form View -->
+    <record id="view_request_open_project_form" model="ir.ui.view">
+        <field name="name">project.management.request.open.project.form</field>
+        <field name="model">project.management.request.open.project</field>
+        <field name="arch" type="xml">
+            <form string="Request Open Project">
+                <sheet>
+                    <group>
+                        <field name="request_code"/>
+                        <field name="project_name"/>
+                        <field name="pm_id"/>
+                        <field name="developer_ids"/>
+                        <field name="qc_ids"/>
+                        <field name="start_date"/>
+                        <field name="description"/>
+                        <field name="state"/>
+                        <field name="cancel_reason"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Request Open Project Tree View -->
+    <record id="view_request_open_project_tree" model="ir.ui.view">
+        <field name="name">project.management.request.open.project.tree</field>
+        <field name="model">project.management.request.open.project</field>
+        <field name="arch" type="xml">
+            <tree string="Request Open Projects">
+                <field name="request_code"/>
+                <field name="project_name"/>
+                <field name="pm_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Request Open Project Action -->
+    <record id="action_request_open_project" model="ir.actions.act_window">
+        <field name="name">Request Open Projects</field>
+        <field name="res_model">project.management.request.open.project</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Request Open Project Menu Item -->
+    <menuitem id="menu_request_open_project" name="Request Open Projects" parent="menu_project_management_root" action="action_request_open_project" sequence="50"/>
+</odoo>
