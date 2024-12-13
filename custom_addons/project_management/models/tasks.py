@@ -5,6 +5,7 @@ class Task(models.Model):
     _name = 'project.tasks'
     _description = 'Project Task'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _order = 'task_code desc'
 
     task_code = fields.Char(string='Task Code', readonly=True)
     name = fields.Char(string='Task Name', required=True)
@@ -21,11 +22,24 @@ class Task(models.Model):
     qc_deadline = fields.Date(string='Quality Control Deadline')
     state = fields.Selection([
         ('new', 'New'),
-        ('dev', 'Development'),
-        ('qc', 'Quality Control'),
+        ('to_do', 'To Do'),
+        ('in_progress', 'In Progress'),
         ('done', 'Done'),
+        ('cancel', 'Cancelled'),
     ], string='Status', default='new', tracking=True)
     description = fields.Text(string='Description')
+
+    def update_incomplete_tasks_to_new_sprint(self):
+        # Find the newest sprint
+        newest_sprint = self.env['project.sprint'].search([], order='start_date desc', limit=1)
+        if newest_sprint:
+            # Find incomplete tasks from closed sprints
+            incomplete_tasks = self.search([
+                ('state', '!=', 'done'),
+                ('sprint_id.state', '=', 'closed')
+            ])
+            # Update tasks to the newest sprint
+            incomplete_tasks.write({'sprint_id': newest_sprint.id})
 
     @api.model
     def create(self, vals):

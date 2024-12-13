@@ -62,16 +62,16 @@ class ProjectManagement(models.Model):
         action['context'] = {'default_project_id': self.id}
         return action
     
-    def action_view_tasks(self):
-        self.ensure_one()
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Tasks',
-            'view_mode': 'tree,form',
-            'res_model': 'project.tasks',
-            'domain': [('project_id', '=', self.id)],
-            'context': {'default_project_id': self.id},
-        }
+    # def action_view_tasks(self):
+    #     self.ensure_one()
+    #     return {
+    #         'type': 'ir.actions.act_window',
+    #         'name': 'Tasks',
+    #         'view_mode': 'tree,form',
+    #         'res_model': 'project.tasks',
+    #         'domain': [('project_id', '=', self.id)],
+    #         'context': {'default_project_id': self.id},
+    #     }
     
     @api.depends('task_ids')
     def _compute_task_count(self):
@@ -117,7 +117,7 @@ class ProjectManagement(models.Model):
                 duplicate_count = self.search_count([('name', '=ilike', record.name)])
                 if duplicate_count > 1:
                     raise ValidationError(_('The property type name "{}" already exists. Please choose a different name.').format(record.name))
-                    
+                        
     @api.model
     def default_get(self, fields):
         res = super(ProjectManagement, self).default_get(fields)

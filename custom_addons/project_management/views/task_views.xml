@@ -28,7 +28,7 @@
         <field name="name">project.tasks.tree</field>
         <field name="model">project.tasks</field>
         <field name="arch" type="xml">
-            <tree string="Tasks">
+            <tree string="Tasks" js_class="project.button.update_newest_sprint">
                 <field name="task_code"/>
                 <field name="name"/>
                 <field name="project_id"/>
@@ -48,7 +48,12 @@
         <field name="res_model">project.tasks</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('project_id', '=', active_id)]</field>
-        <field name="context">{'default_project_id': active_id}</field>
+        <field name="context">
+            {
+                'default_project_id': active_id,
+                'show_update_sprint_button': True
+            }
+        </field>
     </record>
 
     <record id="action_task" model="ir.actions.act_window">

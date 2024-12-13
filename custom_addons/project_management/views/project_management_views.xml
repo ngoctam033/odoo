@@ -9,7 +9,7 @@
             <form string="Project Management">
                 <sheet>
                     <header>
-                        <button name="action_view_tasks" string="View Tasks" type="object" class="btn btn-primary"/>
+                        <button name="%(action_project_task_list)d" type="action" string="View Tasks" class="btn btn-primary"/>
                     </header>
                     <group>
                         <field name="project_code"/>

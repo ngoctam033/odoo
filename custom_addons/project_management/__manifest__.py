@@ -22,6 +22,12 @@
     'data/request_open_project_sequence.xml',
     'data/request_close_project_sequence.xml',
 
+    # server action
+    'data/server_actions.xml',
+
+    # assets
+    'views/assets.xml',
+
     # views
     'views/sprint_views.xml',
     'views/task_views.xml',
@@ -29,10 +35,13 @@
     'views/request_open_project_views.xml',
     'views/request_close_project_views.xml',
     'views/project_management_views.xml',
+
+    # 'static/src/xml/update_newest_sprints_button.xml',
+
   ],
   'demo': [],
   'qweb': [
-      'static/src/xml/*.xml',
+      'static/src/xml/update_newest_sprints_button.xml',
   ],
   "license": "AGPL-3",
   'installable': True,
