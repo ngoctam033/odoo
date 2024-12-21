@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="email_template_project_open_approved" model="mail.template">
+        <field name="name">Project Creation Request Approved</field>
+        <field name="model_id" ref="project_management.model_request_open_project"/>
+        <field name="subject">Project Creation Request: ${object.code} has been approved</field>
+        <field name="email_from">${(user.email or '')|safe}</field>
+        <field name="email_to">${(object.create_uid.email or '')|safe}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Hello ${object.create_uid.name},</p>
+                <p>Your project creation request has been approved. Please contact the project members to inform them.</p>
+                <p>Best regards,</p>
+                <p>${user.name}</p>
+            ]]>
+        </field>
+    </record>
+
+    <record id="email_template_project_open_canceled" model="mail.template">
+        <field name="name">Project Creation Request Canceled</field>
+        <field name="model_id" ref="project_management.model_request_open_project"/>
+        <field name="subject">Project Creation Request: ${object.code} has been canceled</field>
+        <field name="email_from">${(user.email or '')|safe}</field>
+        <field name="email_to">${(object.create_uid.email or '')|safe}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Hello ${object.create_uid.name},</p>
+                <p>Your project creation request has been canceled by ${user.name} with the reason: ${object.cancel_reason}. Please check the information again.</p>
+                <p>Best regards,</p>
+                <p>${user.name}</p>
+            ]]>
+        </field>
+    </record>
+    
+    <record id="email_template_task_completed" model="mail.template">
+        <field name="name">Task Completion Notification to QC</field>
+        <field name="model_id" ref="project_management.model_project_tasks"/>
+        <field name="subject">Task ${object.name} Completed by ${object.dev_id.name} - Ready for QC Testing</field>
+        <field name="email_from">${(user.email or '')|safe}</field>
+        <field name="email_to">${object.qc_id.email|safe}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Hello ${object.qc_id.name},</p>
+                <p>The task <strong>${object.name}</strong> has been completed by <strong>${object.dev_id.name}</strong> and is now ready for your testing.</p>
+                <p><strong>Project:</strong> ${object.project_id.name}</p>
+                <p><strong>Sprint:</strong> ${object.sprint_id.name if object.sprint_id else 'N/A'}</p>
+                <p>Please proceed with the Quality Control process.</p>
+                <p>Best regards,</p>
+                <p>${user.name}</p>
+            ]]>
+        </field>
+    </record>
+
+    <!-- New Email Template for Task Done Notification to Developer -->
+    <record id="email_template_task_done" model="mail.template">
+        <field name="name">Task Done Notification to Developer</field>
+        <field name="model_id" ref="project_management.model_project_tasks"/>
+        <field name="subject">Task ${object.name} has been marked as Done by ${object.qc_id.name}</field>
+        <field name="email_from">${(user.email or '')|safe}</field>
+        <field name="email_to">${object.project_id.project_manager.email|safe}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Hello ${object.dev_id.name},</p>
+                <p>The task <strong>${object.name}</strong> has been marked as Done by <strong>${object.qc_id.name}</strong>.</p>
+                <p><strong>Project:</strong> ${object.project_id.name}</p>
+                <p><strong>Sprint:</strong> ${object.sprint_id.name if object.sprint_id else 'N/A'}</p>
+                <p>Thank you for your hard work.</p>
+                <p>Best regards,</p>
+                <p>${user.name}</p>
+            ]]>
+        </field>
+    </record>
+
+    <!-- New Email Template for Task Return Notification to Developer -->
+    <record id="email_template_task_returned" model="mail.template">
+        <field name="name">Task Return Notification to Developer</field>
+        <field name="model_id" ref="project_management.model_project_tasks"/>
+        <field name="subject">Task ${object.name} has been returned by ${object.qc_id.name}</field>
+        <field name="email_from">${(user.email or '')|safe}</field>
+        <field name="email_to">${object.dev_id.email|safe}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Hello ${object.dev_id.name},</p>
+                <p>The task <strong>${object.name}</strong> has been returned by <strong>${object.qc_id.name}</strong> due to test failure.</p>
+                <p><strong>Project:</strong> ${object.project_id.name}</p>
+                <p><strong>Sprint:</strong> ${object.sprint_id.name if object.sprint_id else 'N/A'}</p>
+                <p><strong>Reason for Return:</strong> ${object.return_reason}</p>
+                <p>Please address the issues and resubmit the task for QC testing.</p>
+                <p>Best regards,</p>
+                <p>${user.name}</p>
+            ]]>
+        </field>
+    </record>
+
+    <!-- New Email Template for Request Close Project Approval -->
+    <record id="email_template_request_close_approved" model="mail.template">
+        <field name="name">Request Close Project Approved</field>
+        <field name="model_id" ref="project_management.model_request_close_project"/>
+        <field name="subject">Phiếu yêu cầu đóng dự án: ${object.code} đã được duyệt</field>
+        <field name="email_from">${(user.email or '')|safe}</field>
+        <field name="email_to">${object.create_uid.email|safe}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Chào ${object.create_uid.name},</p>
+                <p>Phiếu yêu cầu đóng dự án của bạn đã được duyệt.</p>
+                <p>Trân trọng,</p>
+                <p>${user.name}</p>
+            ]]>
+        </field>
+    </record>
+
+    <record id="email_template_request_close_canceled" model="mail.template">
+        <field name="name">Request Close Project Canceled</field>
+        <field name="model_id" ref="project_management.model_request_close_project"/>
+        <field name="subject">Phiếu yêu cầu đóng dự án: ${object.code} đã bị huỷ</field>
+        <field name="email_from">${(user.email or '')|safe}</field>
+        <field name="email_to">${object.create_uid.email|safe}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+                <p>Chào ${object.create_uid.name},</p>
+                <p>Phiếu yêu cầu đóng dự án của bạn đã bị huỷ bởi ${user.name} với lý do: ${object.reason_cancel}. Bạn vui lòng kiểm tra lại thông tin.</p>
+                <p>Trân trọng,</p>
+                <p>${user.name}</p>
+            ]]>
+        </field>
+    </record>
+</odoo>

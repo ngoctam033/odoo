@@ -9,7 +9,7 @@
             <form string="Project Management">
                 <sheet>
                     <header>
-                        <button name="%(action_project_task_list)d" type="action" string="View Tasks" class="btn btn-primary"/>
+                        <button name="action_view_tasks" type="object" string="View Tasks" class="btn btn-primary"/>
                     </header>
                     <group>
                         <field name="project_code"/>
@@ -41,6 +41,7 @@
                                 <tree string="Sprints">
                                     <field name="sprint_code"/>
                                     <field name="name"/>
+                                    <field name="project_id"/>
                                     <field name="start_date"/>
                                     <field name="end_date"/>
                                     <field name="state"/>
@@ -84,6 +85,10 @@
                             </field>
                         </page>
                     </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </sheet>
             </form>
         </field>
@@ -120,54 +125,62 @@
                     <templates>
                         <t t-name="kanban-box">
                             <div>
-                                <div class="o_project_kanban_main">
-                                    <div class="o_kanban_card_content d-flex justify-content-between align-items-start">
-                                        <div class="o_kanban_primary_left">
-                                            <div class="o_primary">
-                                                <strong><t t-esc="record.name.value"/></strong>
+                                    <div class="o_project_kanban_main">
+                                        <a class="o_project_kanban_box" name="action_view_tasks" type="object">
+                                            <div class="o_kanban_card_content d-flex justify-content-between align-items-start">
+                                                <div class="o_kanban_primary_left">
+                                                    <div class="o_primary">
+                                                        <strong><t t-esc="record.name.value"/></strong>
+                                                    </div>
+                                                    <div class="o_secondary">
+                                                        <span><t t-esc="record.state.value"/></span>
+                                                    </div>
+                                                    <div class="o_secondary">
+                                                        <span><t t-esc="record.project_manager.value"/></span>
+                                                    </div>
+                                                    <div class="o_secondary">
+                                                        <span><t t-esc="record.start_date.value"/></span> - <span><t t-esc="record.end_date.value"/></span>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <a class="dropdown-item" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" role="menu">
+                                                        <a class="dropdown-item" href="#" type="open">View</a>
+                                                        <a class="dropdown-item" href="#" type="edit">Edit</a>
+                                                        <a class="dropdown-item" href="#" type="delete">Delete</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="o_secondary">
-                                                <span><t t-esc="record.state.value"/></span>
-                                            </div>
-                                            <div class="o_secondary">
-                                                <span><t t-esc="record.project_manager.value"/></span>
-                                            </div>
-                                            <div class="o_secondary">
-                                                <span><t t-esc="record.start_date.value"/></span> - <span><t t-esc="record.end_date.value"/></span>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown">
-                                            <a class="dropdown-item" href="#" groups="base.group_system" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" role="menu">
-                                                <a class="dropdown-item" href="#" type="open">View</a>
-                                                <a class="dropdown-item" href="#" type="edit">Edit</a>
-                                                <a class="dropdown-item" href="#" type="delete">Delete</a>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="o_project_kanban_boxes">
-                                    <a class="o_project_kanban_box" name="%(action_project_task_list)d" type="action">
-                                        <div>
-                                            <field name="task_count"/> Tasks
-                                        </div>
-                                    </a>
-                                </div>
+                                    <div class="o_project_kanban_boxes">
+                                        <a class="o_project_kanban_box" name="action_view_tasks" type="object">
+                                            <div>
+                                                <field name="task_count"/> Tasks
+                                            </div>
+                                        </a>
+                                    </div>
                             </div>
                         </t>
                     </templates>
             </kanban>
         </field>
     </record>
-
+    
     <!-- Action -->
     <record id="action_project_management" model="ir.actions.act_window">
         <field name="name">Project Management</field>
         <field name="res_model">project.management</field>
         <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('state', '!=', False)]</field>
         <field name="view_id" ref="view_project_management_kanban"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Record
+            </p>
+        </field>
     </record>
 
     <!-- Menu Item -->
@@ -175,6 +188,8 @@
     <menuitem id="menu_project_management" name="Projects" parent="menu_project_management_root" action="action_project_management" sequence="20"/>
     <menuitem id="menu_sprint" name="Sprints" parent="menu_project_management_root" action="action_sprint" sequence="30"/>
     <menuitem id="menu_task" name="Tasks" parent="menu_project_management_root" action="action_task" sequence="40"/>
-    <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_root" action="action_task_type" sequence="50"/>
-    <menuitem id="menu_request_open_project" name="Request Open Projects" parent="menu_project_management_root" action="action_request_open_project" sequence="60"/>
+    <menuitem id="menu_request_open_project" name="Request Open Projects" parent="menu_project_management_root" action="action_request_open_project" sequence="50"/>
+    <menuitem id="menu_request_close_project" name="Request Close Projects" parent="menu_project_management_root" action="action_request_close_project" sequence="60"/>
+    <menuitem id="menu_project_management_configuration" name="Configuration" parent="menu_project_management_root" sequence="80"/>
+    <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_configuration" action="action_task_type" sequence="90"/>
 </odoo>

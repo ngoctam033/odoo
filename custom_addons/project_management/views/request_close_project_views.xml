@@ -1,47 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Request Close Project Form View -->
-    <record id="view_request_close_project_form" model="ir.ui.view">
-        <field name="name">request.close.project.form</field>
-        <field name="model">request.close.project</field>
-        <field name="arch" type="xml">
-            <form string="Request Close Project">
-                <sheet>
-                    <group>
-                        <field name="request_code"/>
-                        <field name="project_id"/>
-                        <field name="pm_id"/>
-                        <field name="end_date"/>
-                        <field name="close_reason"/>
-                        <field name="state"/>
-                        <field name="cancel_reason"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
+    <data>
+        <!-- Tree View -->
+        <record id="view_request_close_project_tree" model="ir.ui.view">
+            <field name="name">request.close.project.tree</field>
+            <field name="model">request.close.project</field>
+            <field name="arch" type="xml">
+                <tree string="Request Close Projects" js_class="project.approve_refuse_all">
+                    <field name="code"/>
+                    <field name="project_id"/>
+                    <field name="state"/>
+                    <field name="reason_close"/>
+                    <field name="reason_cancel"/>
+                    <button name="action_approve_request" type="object" string="Approve" class="btn-primary" 
+                        attrs="{'invisible': [('state', '!=', 'submited')]}"/>
+                </tree>
+            </field>
+        </record>
 
-    <!-- Request Close Project Tree View -->
-    <record id="view_request_close_project_tree" model="ir.ui.view">
-        <field name="name">request.close.project.tree</field>
-        <field name="model">request.close.project</field>
-        <field name="arch" type="xml">
-            <tree string="Request Close Projects">
-                <field name="request_code"/>
-                <field name="project_id"/>
-                <field name="pm_id"/>
-                <field name="state"/>
-            </tree>
-        </field>
-    </record>
+        <!-- Form View -->
+        <record id="view_request_close_project_form" model="ir.ui.view">
+            <field name="name">request.close.project.form</field>
+            <field name="model">request.close.project</field>
+            <field name="arch" type="xml">
+                <form string="Request Close Project">
+                    <sheet>
+                        <header>
+                            <button name="action_approve_request" type="object" string="Approve" class="btn-primary" 
+                                attrs="{'invisible': [('state', '!=', 'submited')]}"/>
+                        </header>
+                        <group>
+                            <field name="code" readonly="1"/>
+                            <field name="project_id"/>
+                            <field name="state"/>
+                            <field name="reason_close"/>
+                            <field name="reason_cancel"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- Request Close Project Action -->
-    <record id="action_request_close_project" model="ir.actions.act_window">
-        <field name="name">Request Close Projects</field>
-        <field name="res_model">request.close.project</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <!-- Request Close Project Menu Item -->
-    <menuitem id="menu_request_close_project" name="Request Close Projects" parent="menu_project_management_root" action="action_request_close_project" sequence="60"/>
+        <!-- Action -->
+        <record id="action_request_close_project" model="ir.actions.act_window">
+            <field name="name">Request Close Projects</field>
+            <field name="res_model">request.close.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_request_close_project_tree"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create Record
+                </p>
+            </field>
+            <field name="context">{'default_model': 'request.close.project'}</field>
+        </record>
+    </data>
 </odoo>

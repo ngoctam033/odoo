@@ -1,0 +1,312 @@
+.o_main_navbar {
+    position: relative;
+    height: $o-navbar-height;
+    border-bottom: 1px solid $o-navbar-inverse-link-hover-bg;
+    background-color: $o-brand-odoo;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Thêm hộp bóng nhẹ
+
+    // Thêm hiệu ứng chuyển đổi mượt mà cho nền và bóng đổ
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        background-color: darken($o-brand-odoo, 5%);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Tăng cường hộp bóng khi hover
+    }
+
+    > a, > button {
+        float: left;
+        height: $o-navbar-height;
+        border: 1px solid transparent; // Thêm border mặc định
+        padding: 0 $o-horizontal-padding;
+        line-height: $o-navbar-height;
+        background-color: transparent;
+        text-align: center;
+        color: inherit;
+        font-size: 18px;
+        user-select: none;
+
+        // Thêm hiệu ứng chuyển đổi cho màu nền và màu chữ
+        transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+
+        &:hover, &:focus {
+            background-color: $o-navbar-inverse-link-hover-bg;
+            color: lighten(white, 10%); // Thay đổi màu chữ khi hover
+            border-bottom: 2px solid lighten($o-brand-odoo, 20%); // Thêm border dưới khi hover
+        }
+
+        &:focus, &:active, &:focus:active {
+            outline: none;
+        }
+    }
+
+    .o_app {
+        cursor: pointer;
+    }
+
+    > .o_menu_brand {
+        display: block;
+        float: left;
+        margin-right: 35px;
+        user-select: none;
+        color: white;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: $o-navbar-height;
+        cursor: pointer;
+        border: 1px solid transparent; // Thêm border mặc định
+
+        // Thêm hiệu ứng chuyển đổi màu chữ khi hover
+        transition: color 0.3s ease, border 0.3s ease;
+
+        &:hover {
+            color: lighten(white, 20%);
+            border-bottom: 2px solid lighten($o-brand-odoo, 20%); // Thêm border dưới khi hover
+        }
+    }
+
+    > .o_menu_toggle {
+        margin-right: 5px;
+        border: 1px solid transparent; // Thêm border mặc định
+        transition: border 0.3s ease;
+
+        &:hover {
+            border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border khi hover
+        }
+    }
+
+    > ul {
+        display: block;
+        float: left;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        > li {
+            position: relative;
+            display: block;
+            float: left;
+            border: 1px solid transparent; // Thêm border mặc định
+            transition: border 0.3s ease;
+
+            &:hover {
+                border-bottom: 2px solid lighten($o-brand-odoo, 20%); // Thêm border dưới khi hover
+            }
+
+            > a {
+                display: block;
+
+                &:focus, &:active, &:focus:active {
+                    outline: none;
+                }
+                &, &:hover, &:focus {
+                    text-decoration: none;
+                }
+            }
+
+            > a, > label {
+                height: $o-navbar-height;
+                padding: 0 10px;
+                color: white;
+                line-height: $o-navbar-height;
+                border: 1px solid transparent; // Thêm border mặc định
+                transition: background-color 0.3s ease, border 0.3s ease;
+
+                // Thêm hiệu ứng chuyển đổi màu nền khi hover
+                &:hover {
+                    background-color: darken($o-brand-odoo, 10%);
+                    border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border khi hover
+                }
+            }
+
+            &.o_extra_menu_items {
+                > a {
+                    width: $o-navbar-height;
+                    text-align: center;
+                    border: 1px solid transparent; // Thêm border mặc định
+                    transition: border 0.3s ease;
+
+                    &:hover {
+                        border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border khi hover
+                    }
+                }
+                &.show > ul {
+                    padding: 0;
+
+                    > li {
+                        > a {
+                            background-color: $o-brand-odoo;
+                            color: white;
+                            border-bottom: 1px solid $o-brand-lightsecondary;
+                            border: 1px solid transparent; // Thêm border mặc định
+                            transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+
+                            &.dropdown-toggle {
+                                background-color: lighten($o-brand-odoo, 15%);
+                                pointer-events: none; // hack to prevent clicking on it because dropdown always opened
+                            }
+
+                            &:hover {
+                                border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border khi hover
+                            }
+                        }
+                        > .dropdown-menu {
+                            position: static;
+                            float: none;
+                            display: block;
+                            border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border cho dropdown
+                            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); // Thêm hộp bóng cho dropdown
+                            max-height: none;
+                            opacity: 0;
+                            visibility: hidden;
+                            transform: translateY(-10px);
+                            transition: all 0.3s ease;
+
+                            &.show {
+                                opacity: 1;
+                                visibility: visible;
+                                transform: translateY(0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.o_menu_systray {
+            float: right;
+        }
+    }
+
+    .dropdown-menu.show {
+        background-color: $o-brand-odoo;
+        max-height: 90vh; // the dropdown should not overstep the viewport
+        min-width: 100%;
+        overflow: auto;
+        margin-top: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border cho dropdown
+        transition: all 0.3s ease;
+
+        @for $index from 3 through 5 {
+            .o_menu_header_lvl_#{$index}, .o_menu_entry_lvl_#{$index} {
+                padding-left: $o-dropdown-hpadding + ($index - 2)*12px;
+            }
+        }
+    }
+
+    .show .dropdown-toggle {
+        background-color: $o-navbar-inverse-link-hover-bg;
+    }
+
+    .o_user_menu {
+        margin-left: 6px;
+
+        > a {
+            padding-right: $o-horizontal-padding;
+            border: 1px solid transparent; // Thêm border mặc định
+            transition: border 0.3s ease;
+
+            &:hover {
+                border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border khi hover
+            }
+        }
+
+        .oe_topbar_avatar {
+            height: 26px;
+            width: 26px;
+            object-fit: cover;
+            transform: translateY(-2px);
+            border-radius: 50%; // Làm tròn avatar
+            border: 2px solid white; // Thêm border cho avatar
+        }
+    }
+
+    // Thêm hiệu ứng cho các mục dropdown
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    // Thêm hiệu ứng chuyển đổi cho các mục dropdown
+    .dropdown-menu {
+        transition: opacity 0.3s ease, transform 0.3s ease, border 0.3s ease;
+    }
+
+    // Responsive Styles
+    @media (max-width: 768px) {
+        > ul, .o_menu_systray {
+            float: none;
+            width: 100%;
+        }
+
+        > .o_menu_toggle {
+            display: block;
+        }
+
+        .o_mobile_menu_toggle {
+            display: block;
+            background-color: $o-brand-odoo;
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: lighten($o-brand-odoo, 10%);
+            }
+        }
+
+        > ul {
+            display: none;
+            flex-direction: column;
+
+            &.active {
+                display: flex;
+            }
+
+            > li {
+                width: 100%;
+                
+                > a, > label {
+                    width: 100%;
+                    text-align: left;
+                    border: 1px solid transparent; // Thêm border mặc định
+                    transition: border 0.3s ease;
+
+                    &:hover {
+                        border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border khi hover
+                    }
+                }
+
+                &.o_extra_menu_items {
+                    > a {
+                        width: 100%;
+                        border: 1px solid transparent; // Thêm border mặc định
+                        transition: border 0.3s ease;
+
+                        &:hover {
+                            border: 1px solid lighten($o-brand-odoo, 20%); // Thêm border khi hover
+                        }
+                    }
+
+                    > .dropdown-menu {
+                        position: static;
+                        box-shadow: none;
+                        width: 100%;
+                        border: none; // Không thêm border trong chế độ mobile
+                    }
+
+                    &:hover > .dropdown-menu {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

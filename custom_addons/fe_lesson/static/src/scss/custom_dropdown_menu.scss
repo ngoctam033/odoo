@@ -1,0 +1,56 @@
+/* CSS tùy chỉnh để ghi đè các kiểu hiện có */
+.o_dropdown_menu {
+    > .dropdown-divider:first-child {
+        display: none;
+    }
+
+    min-width: 150px;
+    max-height: calc(100vh - 140px); // FIXME
+    overflow: auto;
+
+    .o_menu_item {
+        position: relative;
+
+        > .dropdown-item {
+            color: #ffffff; /* Màu chữ trắng */
+            background-color: #0c3255; /* Màu nền chính */
+            transition: color 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+                color: #ffffff; /* Màu chữ khi hover */
+                background-color: darken(#0c3255, 10%); /* Màu nền khi hover */
+            }
+        }
+    }
+}
+
+.dropdown-item {
+    position: relative;
+    color: #ffffff; /* Màu chữ trắng */
+    background-color: #0c3255; /* Màu nền chính */
+    transition: color 0.3s ease, background-color 0.3s ease;
+
+    &:hover {
+        color: #ffffff; /* Màu chữ khi hover */
+        background-color: darken(#0c3255, 10%); /* Màu nền khi hover */
+    }
+
+    &.selected { // TODO why not using standard BS4 "active" class ?
+        color: #ffffff; /* Màu chữ khi được chọn */
+        background-color: darken(#0c3255, 10%); /* Màu nền khi được chọn */
+        font-weight: bold;
+
+        &:before {
+            font-family: FontAwesome;
+            position: absolute;
+            left: 4px;
+            content: "\f00c";
+        }
+    }
+
+    .o_trash_button {
+        padding-left: 8px;
+        position: absolute;
+        right: $dropdown-item-padding-x * 0.5;
+    }
+}

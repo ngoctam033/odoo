@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Group: Project/Admin -->
+        <record id="group_project_admin" model="res.groups">
+            <field name="name">Project/Admin</field>
+            <field name="category_id" ref="project_management.module_category_project_management"/>
+        </record>
+
+        <!-- Group: Project/PM -->
+        <record id="group_project_pm" model="res.groups">
+            <field name="name">Project/PM</field>
+            <field name="category_id" ref="project_management.module_category_project_management"/>
+        </record>
+
+        <!-- Group: Project/Member -->
+        <record id="group_project_member" model="res.groups">
+            <field name="name">Project/Member</field>
+            <field name="category_id" ref="project_management.module_category_project_management"/>
+        </record>
+    </data>
+</odoo>

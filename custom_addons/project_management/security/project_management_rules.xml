@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- record rule for Group Memeber -->
+    <data>
+        <!-- Record Rule: Chỉ cho phép người dùng xem các dự án mà họ tham gia -->
+        <record id="project_management_rule_user_project_access" model="ir.rule">
+            <field name="name">Project: User's Own Projects</field>
+            <field name="model_id" ref="project_management.model_project_management"/>
+            <field name="domain_force">[
+                '|', '|',
+                ('project_manager', '=', user.id),
+                ('developer_ids', 'in', [user.id]),
+                ('qc_ids', 'in', [user.id])
+            ]</field>
+            <field name="groups" eval="[
+                                        (4, ref('project_management.group_project_member'))
+                                    ]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem các sprint của dự án mình tham gia -->
+        <record id="project_management_rule_sprint_access_member" model="ir.rule">
+            <field name="name">Sprint: User's Own Projects (Member)</field>
+            <field name="model_id" ref="project_management.model_project_sprint"/>
+            <field name="domain_force">[
+                '|', '|',
+                ('project_id.project_manager', '=', user.id),
+                ('project_id.developer_ids', 'in', [user.id]),
+                ('project_id.qc_ids', 'in', [user.id])
+            ]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_member'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem/tạo/xoá/sửa các task thuộc dự án mình tham gia -->
+        <record id="project_management_rule_task_access_member" model="ir.rule">
+            <field name="name">Task: User's Own Projects (Member)</field>
+            <field name="model_id" ref="project_management.model_project_tasks"/>
+            <field name="domain_force">[
+                '|', '|',
+                ('project_id.project_manager', '=', user.id),
+                ('project_id.developer_ids', 'in', [user.id]),
+                ('project_id.qc_ids', 'in', [user.id])
+            ]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_member'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <!-- Record Rule: Xem các loại task -->
+        <record id="project_management_rule_task_type_access_member" model="ir.rule">
+            <field name="name">Task Type: View (Member)</field>
+            <field name="model_id" ref="project_management.model_project_tasks_type"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_member'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+    </data>
+
+    <!-- Record rule for PM -->
+    <data>
+        <!-- Record Rule: Chỉ cho phép PM xem/sửa các dự án mà họ tham gia -->
+        <record id="project_management_rule_user_project_access_pm" model="ir.rule">
+            <field name="name">Project: User's Own Projects (PM)</field>
+            <field name="model_id" ref="project_management.model_project_management"/>
+            <field name="domain_force">[
+                ('project_manager', '=', user.id)
+            ]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_pm'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem và tạo sprint cho dự án mình là PM -->
+        <record id="project_management_rule_sprint_access_pm" model="ir.rule">
+            <field name="name">Sprint: User's Own Projects (PM)</field>
+            <field name="model_id" ref="project_management.model_project_sprint"/>
+            <field name="domain_force">[
+                ('project_id.project_manager', '=', user.id),
+            ]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_pm'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem/tạo/xóa/sửa các task thuộc dự án mình tham gia -->
+        <record id="project_management_rule_task_access_pm" model="ir.rule">
+            <field name="name">Task: User's Own Projects (PM)</field>
+            <field name="model_id" ref="project_management.model_project_tasks"/>
+            <field name="domain_force">[
+                ('project_id.project_manager', '=', user.id)
+            ]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_pm'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <!-- Record Rule: Xem/tạo/sửa các loại task -->
+        <record id="project_management_rule_task_type_access_pm" model="ir.rule">
+            <field name="name">Task Type: View/Create/Write (PM)</field>
+            <field name="model_id" ref="project_management.model_project_tasks_type"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_pm'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem và tạo yêu cầu mở dự án có PM là bản thân -->
+        <record id="project_management_rule_request_open_project_access_pm" model="ir.rule">
+            <field name="name">Request Open Project: View/Create (PM)</field>
+            <field name="model_id" ref="project_management.model_request_open_project"/>
+            <field name="domain_force">[
+                ('project_manager', '=', user.id)
+            ]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_pm'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem và tạo yêu cầu đóng dự án cho các dự án mình là PM -->
+        <record id="project_management_rule_request_close_project_access_pm" model="ir.rule">
+            <field name="name">Request Close Project: View/Create (PM)</field>
+            <field name="model_id" ref="project_management.model_request_close_project"/>
+            <field name="domain_force">[
+                ('project_id.project_manager', '=', user.id)
+            ]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_pm'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+    </data>
+    
+    <!-- Record rule for ADMIN -->
+    <data>
+        <!-- Record Rule: Xem/sửa các dự án -->
+        <record id="project_management_rule_user_project_access_admin" model="ir.rule">
+            <field name="name">Project: Admin Access</field>
+            <field name="model_id" ref="project_management.model_project_management"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_admin'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem/tạo/sửa/xoá các sprint -->
+        <record id="project_management_rule_sprint_access_admin" model="ir.rule">
+            <field name="name">Sprint: Admin Access</field>
+            <field name="model_id" ref="project_management.model_project_sprint"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_admin'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <!-- Record Rule: Xem/tạo/xoá/sửa các task -->
+        <record id="project_management_rule_task_access_admin" model="ir.rule">
+            <field name="name">Task: Admin Access</field>
+            <field name="model_id" ref="project_management.model_project_tasks"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_admin'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <!-- Record Rule: Xem/tạo/sửa các loại task -->
+        <record id="project_management_rule_task_type_access_admin" model="ir.rule">
+            <field name="name">Task Type: Admin Access</field>
+            <field name="model_id" ref="project_management.model_project_tasks_type"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_admin'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem và tạo yêu cầu mở dự án có PM là bản thân hoặc người khác -->
+        <record id="project_management_rule_request_open_project_access_admin" model="ir.rule">
+            <field name="name">Request Open Project: Admin Access</field>
+            <field name="model_id" ref="project_management.model_request_open_project"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_admin'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+        <!-- Record Rule: Xem và tạo yêu cầu đóng dự án cho các dự án mình là PM hoặc người khác -->
+        <record id="project_management_rule_request_close_project_access_admin" model="ir.rule">
+            <field name="name">Request Close Project: Admin Access</field>
+            <field name="model_id" ref="project_management.model_request_close_project"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_admin'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+    </data>
+</odoo>

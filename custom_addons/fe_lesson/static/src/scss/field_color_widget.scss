@@ -1,0 +1,68 @@
+.o_int_color {
+    position: relative;
+
+    // Container for the color options
+    .o_color_list {
+        display: flex;
+        flex-wrap: wrap;
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 5px;
+        z-index: 1000;
+    }
+    
+    // Individual color option
+    .o_color_option {
+        position: relative;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin: 2px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1px solid #000;
+        transition: transform 0.2s, box-shadow 0.2s; /* Add transition effects */
+    }
+    
+    // Hover effect for color option
+    .o_color_option:hover {
+        transform: scale(1.2); /* Scale up the element on hover */
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+    }
+
+    // Active color option
+    .o_color_option.active {
+        border: 2px solid #000;
+    }
+
+    // Check icon inside the color option
+    .o_color_option .check-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: rgb(43, 4, 4);
+    }
+
+    // Display selected color
+    .o_color_display {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border: 1px solid #000;
+        cursor: pointer;
+    }
+
+    // CSS for the color count display element
+    .color-count {
+        font-size: 14px; /* Font size */
+        font-weight: bold; /* Font weight */
+        color: #333; /* Font color */
+        background-color: #f9f9f9; /* Background color */
+        padding: 5px 10px; /* Padding */
+        border: 1px solid #ccc; /* Border */
+        border-radius: 5px; /* Border radius */
+        margin-top: 10px; /* Margin top */
+        text-align: center; /* Center align text */
+    }
+}

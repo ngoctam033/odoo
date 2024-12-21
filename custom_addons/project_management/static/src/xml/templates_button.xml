@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <t t-extend="ListView.buttons" t-name="project.updates_new_sprint_button">
+        <t t-jquery="button.o_list_button_add" t-operation="after">
+            <button type="button" class="btn btn-primary o_button_update_sprint">
+                Update Newest Sprints
+            </button>
+        </t>
+    </t>    
+
+    <t t-extend="ListView.buttons" t-name="project.approve_refuse_all_button">
+        <t t-jquery="button.o_list_button_add" t-operation="after">
+            <button type="button" class="btn btn-primary o_button_approve_all">
+                Approve All
+            </button>
+
+            <button type="button" class="btn btn-primary o_button_refuse_all">
+                Refuse All
+            </button>
+        </t>
+    </t>
+</odoo>

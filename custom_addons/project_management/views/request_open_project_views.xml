@@ -1,47 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Request Open Project Form View -->
+    <record id="view_request_open_project_tree" model="ir.ui.view">
+        <field name="name">request.open.project.tree</field>
+        <field name="model">request.open.project</field>
+        <field name="arch" type="xml">
+            <tree string="Request Open Project" js_class="project.approve_refuse_all">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="project_manager"/>
+                <field name="start_date"/>
+                <field name="state"/>
+                <field name="cancel_reason" invisible="1"/>
+                <button name="%(action_cancel_reason_wizard)d" string="Refuse Request" type="action" class="btn-primary"/>
+            </tree>
+        </field>
+    </record>
+
     <record id="view_request_open_project_form" model="ir.ui.view">
-        <field name="name">project.management.request.open.project.form</field>
-        <field name="model">project.management.request.open.project</field>
+        <field name="name">request.open.project.form</field>
+        <field name="model">request.open.project</field>
         <field name="arch" type="xml">
             <form string="Request Open Project">
                 <sheet>
+                <header>
+                    <button name="%(action_cancel_reason_wizard)d" string="Refuse Request" type="action" class="btn-primary"/>
+                </header>
                     <group>
-                        <field name="request_code"/>
-                        <field name="project_name"/>
-                        <field name="pm_id"/>
-                        <field name="developer_ids"/>
-                        <field name="qc_ids"/>
+                        <field name="code"/>
+                        <field name="name"/>
                         <field name="start_date"/>
-                        <field name="description"/>
                         <field name="state"/>
-                        <field name="cancel_reason"/>
                     </group>
+                    <notebook>
+                        <page string="Team">
+                            <group>
+                                <field name="project_manager"/>
+                                <field name="developer_ids"/>
+                                <field name="qc_ids"/>
+                            </group>
+                        </page>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                        <page string="Reason Cancel">
+                            <group>
+                                <field name="cancel_reason"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Request Open Project Tree View -->
-    <record id="view_request_open_project_tree" model="ir.ui.view">
-        <field name="name">project.management.request.open.project.tree</field>
-        <field name="model">project.management.request.open.project</field>
-        <field name="arch" type="xml">
-            <tree string="Request Open Projects">
-                <field name="request_code"/>
-                <field name="project_name"/>
-                <field name="pm_id"/>
-                <field name="state"/>
-            </tree>
-        </field>
-    </record>
-
-    <!-- Request Open Project Action -->
     <record id="action_request_open_project" model="ir.actions.act_window">
-        <field name="name">Request Open Projects</field>
-        <field name="res_model">project.management.request.open.project</field>
+        <field name="name">Request Open Project</field>
+        <field name="res_model">request.open.project</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_request_open_project_tree"/>
+        <field name="target">current</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Record
+            </p>
+        </field>
+        <field name="context">{'default_model': 'request.open.project'}</field>
     </record>
-
 </odoo>

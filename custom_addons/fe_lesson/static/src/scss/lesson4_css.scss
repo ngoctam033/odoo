@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Áp dụng font Roboto cho toàn bộ nội dung văn bản trên trang */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Styles cho thanh menu với id 'top_menu' */
+#top_menu {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #333333;
+}
+
+/* Chỉnh màu nền cho thẻ div có class 'container' trong thẻ main thành màu đỏ */
+main {
+    .container {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .topic {
+            position: relative;
+            padding-left: 53px; /* Tạo khoảng trống cho icon, điều chỉnh theo kích thước icon */
+            font-size: 24px;
+            font-weight: 700;
+            color: #007BFF;
+        }
+        
+        .topic::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%); /* Căn giữa icon theo chiều dọc */
+            width: 40px; /* Độ rộng của icon */
+            height: 40px; /* Chiều cao của icon */
+            background-image: url('/fe_lesson/static/src/img/polygon-bg 1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .lesson4-btn {
+            padding: 0 16px;
+            gap: 8px;
+        
+            width: 167px;
+            height: 56px;
+            left: 150px;
+            top: 357px;
+        
+            background: #007BFF;
+            border-radius: 32px;
+            color: #FFFFFF; /* Màu chữ trắng */
+            font-family: 'Roboto', sans-serif; /* Font chữ Roboto */
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 19px;
+            text-align: center;
+            text-decoration: none; /* Loại bỏ gạch chân */
+            cursor: pointer; /* Thay đổi con trỏ khi hover */
+        }
+        
+        .lesson4-btn:hover {
+            background: #0056b3; /* Màu nền khi hover */
+        }
+        .container-introduction {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            .introduction-header{
+                h1 {
+                    font-size: 40px;
+                    font-weight: 700;
+                    line-height: 60px;
+                    color: #091f32;
+                }
+                p {
+                    font-size: 20px;
+                    font-weight: 400;
+                    line-height: 30px;
+                    color: #4D4D4D;
+                }
+            }
+        }
+        .container-news{
+            display: flex; /* Sử dụng Flexbox */
+            flex-direction: column; /* Sắp xếp thẻ con theo chiều dọc */
+            gap: 15px; /* Tạo khoảng cách giữa các thẻ con theo chiều dọc */
+            .news{
+                display: flex;
+                /* Container chính của carousel */
+                .carousel-inner {
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                    /* Định dạng từng item */
+                    .carousel-item {
+                        display: flex;
+                        flex-wrap: wrap; /* Cho phép các thẻ con xuống dòng */
+                        justify-content: space-between; /* Các thẻ con sẽ căn đều theo chiều ngang */
+                        width: 100%;
+                        transition: transform 0.5s ease-in-out;
+                        box-sizing: border-box;
+                    }
+                    
+                    /* Định dạng từng tin tức (news-item) */
+                    .news-item {
+                        width: 350px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        img {
+                            width: 360px;
+                            height: 240px;
+                            object-fit: cover;
+                        }
+                        .news-date {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+
+                            .icon {
+                                width: 16px; /* Đặt kích thước icon */
+                                height: 16px; /* Đặt kích thước icon */
+                                margin-right: 8px; /* Khoảng cách giữa icon và span */
+                            }
+                        }
+
+                        h3 {
+                            width: 100%;
+                            font-size: 18px;
+                            font-weight: 700;
+                            line-height: 24px;
+                            color:#4D4D4D;
+                        }
+
+                        p {
+                            font-size: 16px;
+                            font-weight: 400;
+                            line-height: 24px;
+                            text-align: left;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            // màu chữ background: #808080;
+                            color: #808080;
+                        }
+                    }
+                }     
+            }
+            .indicators {
+                display: flex; /* Sử dụng flexbox để dễ dàng căn chỉnh */
+                justify-content: flex-start; /* Đưa tất cả nội dung về phía bên trái */
+                align-items: center;
+                bottom: 15px; /* Khoảng cách từ đáy container */
+                gap: 10px; /* Khoảng cách giữa các dấu chấm */
+                span {
+                    width: 10px;
+                    height: 10px;
+                    background-color:#007BFF;
+                    opacity: 30%;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+                .active {
+                    width: 16px;
+                    opacity: 100%;
+                    height: 16px;
+                    background-color:#007BFF;
+                }
+            }
+        }
+        
+        .container-intention{
+                display: flex;
+                gap: 30px;                
+                margin-bottom: 30px;
+
+                .overlay-img{
+                    position: absolute;
+                    object-fit: cover;
+                }
+
+                .intention-img{
+                    position: relative;
+                    img {
+                        height: 100;
+                        object-fit: cover;
+                    }
+
+                    #overlay1 {
+                        top: 411px;
+                        left: 53px;
+                        width: 124px;
+                        height: 76px;
+                    }
+
+                    #overlay2 {
+                        top: 0px;
+                        left: -53px;
+                        width: 136px;
+                        height: 136px;
+                    }
+                }
+                .intention-content{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    p {
+                        width: auto;
+                        height: auto;
+                        gap: 0px;
+                        opacity: 0px;
+                        
+                        color: #4D4D4D;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        text-align: left;
+                        text-underline-position: from-font;
+                        text-decoration-skip-ink: none;
+                        margin-bottom: 0px;
+                    }
+                }
+
+                #overlay3 {
+                    top: -19px;
+                    right: -600px;
+                    width: 118px;
+                    height: 95px;
+                }
+                #overlay4 {
+                    bottom: 0px;
+                    left: 1086px;
+                    width: 146px;
+                    height: 109px;
+                }
+        }
+        .container-gallery{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 30px;
+            .gallery{
+            display: flex;
+            align-items: center; /* Aligns items vertically */
+            flex-wrap: wrap; /* Allows elements to wrap */
+            gap: 20px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .gallery-item{
+                    width:262px;
+                    height:270px;
+                }
+
+                .vid{
+                    width:543px;
+                    height:270px;
+                    .custom-video {
+                        width: 100%; /* Chiếm toàn bộ chiều rộng thẻ cha */
+                        height: 100%;
+                        object-fit: fill;
+                    }
+                }
+            }
+        }
+   }
+}
+
+/* Mobile Devices (up to 767px) */
+@media (max-width: 767px) {
+    // các thẻ con cấp một trong container-introduction sắp thành cột
+    .container-introduction {
+        flex-direction: column;
+        gap: 20px;
+        // chỉnh cho introduction-img tự fix vừa màn hìnhc(chiều ngang)
+        .introduction-img {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .container-intention {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        gap: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 30px; /* Add margin to create space between sections */
+
+        .intention-img {
+            width: 100%;
+            height: auto;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .overlay-img {
+            display: none; /* Hide overlay images on mobile for better readability */
+        }
+    }
+}

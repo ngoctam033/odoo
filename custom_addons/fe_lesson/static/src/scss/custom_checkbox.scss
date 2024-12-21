@@ -1,0 +1,5 @@
+.custom-checkbox-btn {
+    @extend .btn;
+    display: inline-block; /* Thay đổi từ inline-flex thành inline-block */
+    vertical-align: unset; /* Ghi đè thuộc tính vertical-align */
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Demo Data for Project Management -->
+        <record id="project_management_demo_1" model="project.management">
+            <field name="name">Final Project</field>
+        </record>
+        <record id="project_management_demo_2" model="project.management">
+            <field name="name">New Project</field>
+        </record>
+        <record id="project_management_demo_3" model="project.management">
+            <field name="name">Old Project</field>
+        </record>
+        <record id="project_management_demo_4" model="project.management">
+            <field name="name">Test Project</field>
+        </record>
+        <record id="project_management_demo_5" model="project.management">
+            <field name="name">Demo Project</field>
+        </record>
+    </data>
+</odoo>

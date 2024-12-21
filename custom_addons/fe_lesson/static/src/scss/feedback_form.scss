@@ -1,0 +1,104 @@
+// Variables
+$primary-color: #007bff;
+$hover-color: darken($primary-color, 10%);
+$success-bg: #d4edda;
+$success-border: #c3e6cb;
+$success-text: #155724;
+$error-bg: #f8d7da;
+$error-border: #f5c6cb;
+$error-text: #721c24;
+$background-color: #f9f9f9;
+$border-color: #ccc;
+$font-family: 'Arial, sans-serif';
+
+// Feedback Snippet Styles
+.feedback_snippet {
+  background-color: $background-color;
+  padding: 40px 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: $font-family;
+
+  .feedback-form-container {
+    display: flex;
+    flex-direction: column;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .form-group {
+        margin-bottom: 20px;
+
+        label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 600;
+          color: #333;
+        }
+
+        textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid $border-color;
+          border-radius: 4px;
+          resize: vertical;
+          font-size: 16px;
+          font-family: inherit;
+        }
+      }
+
+      button[type="submit"] {
+        padding: 12px 20px;
+        background-color: $primary-color;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: $hover-color;
+        }
+      }
+    }
+
+    #feedback_response {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+      display: none;
+      font-size: 16px;
+
+      &.success {
+        background-color: $success-bg;
+        color: $success-text;
+        border: 1px solid $success-border;
+        display: block;
+      }
+
+      &.error {
+        background-color: $error-bg;
+        color: $error-text;
+        border: 1px solid $error-border;
+        display: block;
+      }
+    }
+  }
+
+  // Responsive Design
+  @media (max-width: 600px) {
+    padding: 20px 10px;
+
+    .feedback-form-container {
+      form {
+        button[type="submit"] {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

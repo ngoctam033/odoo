@@ -9,10 +9,13 @@
   'maintainer': 'BAP Solutions',
   'summary': 'Test',
   "description": """Try to test""",
-  'depends': ['base', 'mail', 'website'],
+  'depends': ['base', 'mail'],
   'data': [
+    # security
+    'security/project_management_category.xml',
+    'security/project_management_groups.xml',
+    'security/project_management_rules.xml',
     'security/ir.model.access.csv',
-    # 'security/project_management_security.xml',
 
     # sequence
     'data/project_sprint_sequence.xml',
@@ -22,8 +25,11 @@
     'data/request_open_project_sequence.xml',
     'data/request_close_project_sequence.xml',
 
-    # server action
-    'data/server_actions.xml',
+    # mail server action
+    'data/mail_server.xml',
+
+    # mail template
+    'data/mail_templates.xml',
 
     # assets
     'views/assets.xml',
@@ -32,17 +38,16 @@
     'views/sprint_views.xml',
     'views/task_views.xml',
     'views/type_task_views.xml',
+    'views/cancel_reason_wizard_views.xml',
     'views/request_open_project_views.xml',
     'views/request_close_project_views.xml',
     'views/project_management_views.xml',
-
-    # 'static/src/xml/update_newest_sprints_button.xml',
-
   ],
   'demo': [],
   'qweb': [
-      'static/src/xml/update_newest_sprints_button.xml',
+      'static/src/xml/templates_button.xml',
   ],
+  'post_init_hook': 'generate_demo_data',
   "license": "AGPL-3",
   'installable': True,
   'auto_install': False,

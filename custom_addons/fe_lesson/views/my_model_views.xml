@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form view -->
+        <record id="view_form_my_model" model="ir.ui.view">
+            <field name="name">my.model.form</field>
+            <field name="model">my.model</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="int_color"/>
+                            <field name="date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view -->
+        <record id="view_tree_my_model" model="ir.ui.view">
+            <field name="name">my.model.tree</field>
+            <field name="model">my.model</field>
+            <field name="arch" type="xml">
+            <!-- js_class="clickme_buttons" -->
+                <tree js_class="clickme_buttons">
+                    <field name="name"/>
+                    <field name="color"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_my_model" model="ir.actions.act_window">
+            <field name="name">Demo Widget</field>
+            <field name="res_model">my.model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu -->
+        <menuitem id="menu_my_model" name="Demo Widget" sequence="10"/>
+        <menuitem id="submenu_my_model" name="Demo Widget" parent="menu_my_model" action="action_my_model"/>
+    </data>
+</odoo>

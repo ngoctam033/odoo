@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Demo Data for Project Members -->
+        <record id="project_member_demo_1" model="res.users">
+            <field name="role">developer</field>
+            <field name="project_id" ref="project_management.project_management_demo_2"/>
+            <field name="login">john.doe</field>
+            <!-- Avoid auto-including this demo user in any default group -->
+            <field name="groups_id" eval="[(6,0,[])]"/>
+            <field name="partner_id" ref="partner_demo_1"/>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

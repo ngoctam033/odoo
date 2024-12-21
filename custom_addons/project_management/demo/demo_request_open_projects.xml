@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="request_open_project_1" model="request.open.project">
+        <field name="name">Project 1</field>
+        <field name="project_manager" ref="base.user_admin"/>
+        <field name="developer_ids" eval="[(6, 0, [ref('base.user_demo')])]"/>
+        <field name="qc_ids" eval="[(6, 0, [ref('base.user_demo')])]"/>
+        <field name="description">Description for Project 1</field>
+        <field name="cancel_reason">Reason for canceling request 1</field>
+    </record>
+
+    <record id="request_open_project_2" model="request.open.project">
+        <field name="name">Project 2</field>
+        <field name="project_manager" ref="base.user_admin"/>
+        <field name="developer_ids" eval="[(6, 0, [ref('base.user_demo')])]"/>
+        <field name="qc_ids" eval="[(6, 0, [ref('base.user_demo')])]"/>
+        <field name="description">Description for Project 2</field>
+        <field name="cancel_reason">Reason for canceling request 2</field>
+    </record>
+
+    <record id="request_open_project_3" model="request.open.project">
+        <field name="name">Project 3</field>
+        <field name="project_manager" ref="base.user_admin"/>
+        <field name="developer_ids" eval="[(6, 0, [ref('base.user_demo')])]"/>
+        <field name="qc_ids" eval="[(6, 0, [ref('base.user_demo')])]"/>
+        <field name="description">Description for Project 3</field>
+        <field name="cancel_reason">Reason for canceling request 3</field>
+    </record>
+</odoo>

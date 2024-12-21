@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit backend assets to include custom JavaScript and SCSS -->
+        <template id="assets_backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script src="/fe_lesson/static/src/js/widget_color_selector.js" type="text/javascript"/>
+                <script src="/fe_lesson/static/src/js/widget_hide_date.js" type="text/javascript"/>
+                <script src="/fe_lesson/static/src/js/clickme_button.js" type="text/javascript"/>
+                <link href="/fe_lesson/static/src/scss/custom_primary.scss" rel="stylesheet" type="text/scss"/>
+                <link href="/fe_lesson/static/src/scss/field_color_widget.scss" rel="stylesheet" type="text/scss"/>
+                <link href="/fe_lesson/static/src/scss/custom_checkbox.scss" rel="stylesheet" type="text/scss"/>
+            </xpath>
+        </template>
+
+        <!-- Change primary color -->
+        <template id="assets_custom" inherit_id="web._assets_primary_variables">
+            <xpath expr="//link[last()]" position="after">
+                <link href="/fe_lesson/static/src/scss/custom_primary.scss" rel="stylesheet" type="text/scss"/>
+            </xpath>
+        </template>
+
+        <!-- Change navbar -->
+        <template id="assets_common_inherit" inherit_id="web.assets_common">
+            <xpath expr="//link[last()]" position="after">
+                <link href="/fe_lesson/static/src/scss/custom_navbar.scss" rel="stylesheet" type="text/scss"/>
+            </xpath>
+        </template>
+
+        <!-- Custom dropdown menu -->
+        <template id="dropdown_menu_custom" inherit_id="web.assets_backend">
+            <xpath expr="//link[last()]" position="after">
+                <link href="/fe_lesson/static/src/scss/custom_dropdown_menu.scss" rel="stylesheet" type="text/scss"/>
+            </xpath>
+        </template>
+
+        <!-- css for lesson4 -->
+        <template id="lesson4_assets" name="fe_lesson assets" inherit_id="web.assets_frontend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/fe_lesson/static/src/scss/lesson4_css.scss"/>
+                <script src="/fe_lesson/static/src/js/lesson4_js.js"></script>
+            </xpath>
+        </template>
+
+        <!-- Add logo -->
+        <template id="custom_placeholder_header_brand" inherit_id="website.placeholder_header_brand">
+            <xpath expr="//a" position="replace">
+                <a href="/lesson4" class="navbar-brand">
+                    <img src="/fe_lesson/static/src/img/logo-bap.png" alt="Logo"/>
+                </a>
+            </xpath>
+        </template>
+
+        <!-- Add language -->
+        <template id="lesson4_template" name="Lesson 4" inherit_id="website.layout">
+
+            <!-- Add language dropdown -->
+            <xpath expr="//div[@id='top_menu_collapse']" position="inside">
+                <div class="navbar-nav ml-auto">
+                    <div class="nav-item dropdown">
+                        <!-- get current language -->
+                        <t t-set="current_lang" t-value="request.env['res.lang'].search([('code','=', request.env.context.get('lang'))], limit=1)"/>
+                        
+                        <!-- Nút dropdown hiển thị tên và cờ ngôn ngữ hiện tại -->
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <!-- Hiển thị cờ ngôn ngữ -->
+                            <img t-att-src="'/fe_lesson/static/src/img/flags/%s.png' % current_lang.code" alt="flag" class="mr-2" style="width:20px; height:20px;"/>
+                            <span><t t-esc="current_lang.name or 'Ngôn ngữ'"/></span>
+                        </a>
+                        
+                        <!-- Dropdown menu chứa danh sách các ngôn ngữ với cờ -->
+                        <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                            <!-- lấy ngôn ngữ mặc định -->
+                            <!-- <t t-set="default_lang" t-value="request.env['res.lang'].sudo().search([('code', '=', request.env['ir.default'].get('res.partner', 'lang'))], limit=1)"/> -->
+                            <t t-foreach="request.env['res.lang'].search([('active', '=', True)])" t-as="lang">
+                                <a class="dropdown-item d-flex align-items-center" 
+                                   t-att-href="request.env['ir.config_parameter'].sudo().get_param('web.base.url') + '/' + lang.code + '/'">
+                                    <!-- Hiển thị cờ ngôn ngữ -->
+                                    <img t-att-src="'/fe_lesson/static/src/img/flags/%s.png' % lang.code" alt="flag" class="mr-2" style="width:20px; height:20px;"/>
+                                    <span>
+                                        <t t-esc="lang.name"/>
+                                        <t t-if="lang.code == request.env.context.get('lang')">
+                                            <i class="fa fa-check ml-2" aria-hidden="true"></i>
+                                        </t>
+                                    </span>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+            <!-- xóa phần tử oe_structure_header_default_1 -->
+            <xpath expr="//div[@id='oe_structure_header_default_1']" position="replace"/>
+
+        </template>
+
+        <!-- Toạo template mới và chèn wesite. layout -->
+        <template id="lesson4_homepage" name="Lesson 4 Homepage">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <div class="container-introduction">
+                            <!-- Nội dung cho header -->
+                            <div class="introduction-header">
+                                <h1>One platform for your team to get work done faster</h1>
+                                <p>Comprehensive features make Bemo® the premier option to boost efficiency and productivity in your workflow</p>
+                                <button class="lesson4-btn">Go to system</button>
+                            </div>
+                            <div class="introduction-img">
+                                <!-- gắn ảnh -->
+                                <img src="/fe_lesson/static/src/img/Group 22.svg" alt="introduction"/>
+                            </div>
+                        </div>
+                        <div class="container-news">
+                            <h2 class="topic">TIN TỨC NỘI BỘ MỚI NHẤT</h2>
+                            <div class="news">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="news-item">
+                                            <img src="/fe_lesson/static/src/img/Frame 11282.png" alt="news1"/>
+                                            <!-- Tạo một thẻ để hiển thị ngày tháng của bào đăng, có icon lịch -->
+                                            <div class="news-date">
+                                                <img src="/fe_lesson/static/src/img/calendar.svg" alt="calendar" class="icon"/>
+                                                <span>12/12/2021</span>
+                                            </div>
+                                            <!-- tiêu đề bài viết -->
+                                            <h3>[BAP x DUT] Blockchain Seminar</h3>
+                                            <!-- tóm tắt nội dung bài viết -->
+                                            <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students ...</p>
+                                        </div>
+                                        <div class="news-item">
+                                            <img src="/fe_lesson/static/src/img/Frame 11282.png" alt="news1"/>
+                                            <!-- Tạo một thẻ để hiển thị ngày tháng của bào đăng, có icon lịch -->
+                                            <div class="news-date">
+                                                <img src="/fe_lesson/static/src/img/calendar.svg" alt="calendar" class="icon"/>
+                                                <span>12/12/2021</span>
+                                            </div>
+                                            <!-- tiêu đề bài viết -->
+                                            <h3>[BAP x DUT] Blockchain Seminar</h3>
+                                            <!-- tóm tắt nội dung bài viết -->
+                                            <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students ...</p>
+                                        </div>
+                                        <div class="news-item">
+                                            <img src="/fe_lesson/static/src/img/Frame 11282.png" alt="news1"/>
+                                            <!-- Tạo một thẻ để hiển thị ngày tháng của bào đăng, có icon lịch -->
+                                            <div class="news-date">
+                                                <img src="/fe_lesson/static/src/img/calendar.svg" alt="calendar" class="icon"/>
+                                                <span>12/12/2021</span>
+                                            </div>
+                                            <!-- tiêu đề bài viết -->
+                                            <h3>[BAP x DUT] Blockchain Seminar</h3>
+                                            <!-- tóm tắt nội dung bài viết -->
+                                            <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students ...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="indicators">
+                                <span data-slide="0" class="active"></span>
+                                <span data-slide="1"></span>
+                                <span data-slide="2"></span>
+                            </div>
+                        </div>
+                        <div class="container-intention">
+                            <div class="intention-img">
+                                <img src="/fe_lesson/static/src/img/bemo_company_intention 1.png" alt="introduction"/>
+                                <img src="/fe_lesson/static/src/img/Group 25.png" alt="introduction" id="overlay1" class="overlay-img"/>
+                                <img src="/fe_lesson/static/src/img/Group 26.png" alt="introduction" id="overlay2" class="overlay-img"/>
+                                <img src="/fe_lesson/static/src/img/Group 23.png" alt="introduction" id="overlay3" class="overlay-img"/>
+                                <img src="/fe_lesson/static/src/img/Group 24.png" alt="introduction" id="overlay4" class="overlay-img"/>
+                            </div>
+                            <div class="intention-content">
+                                <h2 class="topic">Company Intention</h2>
+                                <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students...</p>
+                                <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students...</p>
+                                <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students...</p>
+                                <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students...</p>
+                                <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students...</p>
+                                <p>On April 23, BAP company had a sharing session on the topic of Blockchain with the participation of students...</p>
+                            </div>
+                        </div>
+                        <div class="container-gallery">
+                            <h2 class="topic">Company Gallery</h2>
+                            <div class="gallery">
+                                <div class="gallery-item vid">
+                                    <video controls="controls" autoplay="autoplay" muted="muted" class="custom-video">
+                                        <source src="https://bap-software.net/wp-content/uploads/2021/06/video-nen.mp4" type="video/mp4"/>
+                                        Trình duyệt của bạn không hỗ trợ video.
+                                    </video>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/fe_lesson/static/src/img/Rectangle 2958.png" alt="gallery1"/>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/fe_lesson/static/src/img/Rectangle 2959.png" alt="gallery2"/>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/fe_lesson/static/src/img/Rectangle 2960.png" alt="gallery3"/>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/fe_lesson/static/src/img/Rectangle 2961.png" alt="gallery4"/>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/fe_lesson/static/src/img/Rectangle 2962.png" alt="gallery5"/>
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="/fe_lesson/static/src/img/Rectangle 2963.png" alt="gallery6"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

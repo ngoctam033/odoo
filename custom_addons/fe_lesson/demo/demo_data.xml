@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo data for my.model -->
+        <record id="demo_my_model_1" model="my.model">
+            <field name="name">Demo Record 1</field>
+            <field name="date">2024-01-01</field>
+            <field name="color">3</field>
+        </record>
+        <record id="demo_my_model_2" model="my.model">
+            <field name="name">Demo Record 2</field>
+            <field name="date">2024-02-01</field>
+            <field name="color">3</field>
+        </record>
+        <record id="demo_my_model_3" model="my.model">
+            <field name="name">Demo Record 3</field>
+            <field name="date">2024-03-01</field>
+            <field name="color">3</field>
+        </record>
+    </data>
+
+    <data>
+        <record id="menu_aboutus" model="website.menu">
+            <field name="name">About Us</field>
+            <field name="url">/contactus</field>
+            <field name="page_id" ref="website.contactus_page"/>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">70</field>
+        </record>
+        <record id="menu_blog" model="website.menu">
+            <field name="name">Blog</field>
+            <field name="url">/contactus</field>
+            <field name="page_id" ref="website.contactus_page"/>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">80</field>
+        </record>
+    </data>
+    
+    <data noupdate="1">
+        <!-- Ensure Vietnamese language is installed and active -->
+        <record id="base.lang_vi_VN" model="res.lang">
+            <field name="active">True</field>
+        </record>
+        
+        <!-- Update the existing website record -->
+        <record id="website.default_website" model="website">
+            <field name="name">My Website</field>
+            <field name="language_ids" eval="[(4, ref('base.lang_vi_VN'))]"/>
+            <field name="default_lang_id" ref="base.lang_vi_VN"/>
+        </record>
+    </data>
+</odoo>

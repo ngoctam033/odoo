@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <t t-extend="ListView.buttons" t-name="fe_lesson.buttons">
+        <t t-jquery="button.o_list_button_add" t-operation="before">
+            <!-- Clickme button -->
+            <button type="button" class="custom-checkbox-btn btn-primary o_button_clickme">
+                Click me!
+            </button>
+
+            <!-- Checkbox hidedate -->
+            <label class="custom-checkbox-btn btn-primary">
+                <input type="checkbox" class="custom-checkbox-input hide-color" data-column-index="2"/> Hide Color
+            </label>
+
+            <!-- Checkbox hide color -->
+            <label class="custom-checkbox-btn btn-primary">
+                <input type="checkbox" class="custom-checkbox-input hide-date" data-column-index="3"/> Hide Date
+            </label>
+
+            <!-- Apply button -->
+            <button type="button" class="custom-checkbox-btn btn-primary o_button_apply" style="display: none;">
+                Apply
+            </button>
+
+            <!-- Clear button -->
+            <button type="button" class="custom-checkbox-btn btn-primary o_button_clear" style="display: none;">
+                Clear
+            </button>
+        </t>
+    </t>
+</odoo>

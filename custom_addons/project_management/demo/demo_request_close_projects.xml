@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="request_close_project_1" model="request.close.project">
+        <field name="project_id" ref="project_management.project_management_demo_1"/>
+        <field name="reason_cancel">Reason for canceling request 1</field>
+        <field name="reason_close">Reason for closing project 1</field>
+    </record>
+
+    <record id="request_close_project_2" model="request.close.project">
+        <field name="project_id" ref="project_management.project_management_demo_2"/>
+        <field name="reason_cancel">Reason for canceling request 2</field>
+        <field name="reason_close">Reason for closing project 2</field>
+    </record>
+
+    <record id="request_close_project_3" model="request.close.project">
+        <field name="project_id" ref="project_management.project_management_demo_33"/>
+        <field name="reason_cancel">Reason for canceling request 3</field>
+        <field name="reason_close">Reason for closing project 3</field>
+    </record>
+</odoo>

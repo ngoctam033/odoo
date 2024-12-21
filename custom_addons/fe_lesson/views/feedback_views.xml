@@ -1,0 +1,44 @@
+<odoo>
+    <!-- Tree View for Feedback -->
+    <record id="view_feedback_tree" model="ir.ui.view">
+        <field name="name">website.user.feedback.tree</field>
+        <field name="model">website.user.feedback</field>
+        <field name="arch" type="xml">
+            <tree string="Feedbacks">
+                <field name="description"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Feedback -->
+    <record id="view_feedback_form" model="ir.ui.view">
+        <field name="name">website.user.feedback.form</field>
+        <field name="model">website.user.feedback</field>
+        <field name="arch" type="xml">
+            <form string="Feedback">
+                <sheet>
+                    <group>
+                        <field name="description"/>
+                        <field name="create_date" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action để mở các View của Feedback -->
+    <record id="action_feedback" model="ir.actions.act_window">
+        <field name="name">Feedback</field>
+        <field name="res_model">website.user.feedback</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the first feedback
+            </p>
+        </field>
+    </record>
+
+        <!-- Menu con cho Feedback liên kết với Action -->
+    <menuitem id="menu_feedback" name="Feedback" parent="fe_lesson.menu_my_model" action="fe_lesson.action_feedback" sequence="20"/>
+</odoo>

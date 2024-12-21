@@ -1,0 +1,124 @@
+<odoo>
+    <data noupdate="0">
+        <!-- Định nghĩa các bản ghi mẫu cho model res.partner -->
+        <record id="partner_demo_1" model="res.partner">
+            <field name="name">John Doe</field>
+            <field name="email">john.doe@example.com</field>
+            <field name="phone">+123456789</field>
+        </record>
+
+        <record id="partner_demo_2" model="res.partner">
+            <field name="name">Jane Smith</field>
+            <field name="email">jane.smith@example.com</field>
+            <field name="phone">+987654321</field>
+        </record>
+
+        <record id="partner_demo_3" model="res.partner">
+            <field name="name">Alice Johnson</field>
+            <field name="email">alice.johnson@example.com</field>
+            <field name="phone">+1122334455</field>
+        </record>
+
+        <record id="partner_demo_4" model="res.partner">
+            <field name="name">Bob Brown</field>
+            <field name="email">bob.brown@example.com</field>
+            <field name="phone">+2233445566</field>
+        </record>
+
+        <record id="partner_demo_5" model="res.partner">
+            <field name="name">Charlie Davis</field>
+            <field name="email">charlie.davis@example.com</field>
+            <field name="phone">+3344556677</field>
+        </record>
+
+        <record id="partner_demo_6" model="res.partner">
+            <field name="name">Diana Evans</field>
+            <field name="email">diana.evans@example.com</field>
+            <field name="phone">+4455667788</field>
+        </record>
+
+        <record id="partner_demo_7" model="res.partner">
+            <field name="name">Eve Foster</field>
+            <field name="email">eve.foster@example.com</field>
+            <field name="phone">+5566778899</field>
+        </record>
+
+        <record id="partner_demo_8" model="res.partner">
+            <field name="name">Frank Green</field>
+            <field name="email">frank.green@example.com</field>
+            <field name="phone">+6677889900</field>
+        </record>
+
+        <record id="partner_demo_9" model="res.partner">
+            <field name="name">Grace Harris</field>
+            <field name="email">grace.harris@example.com</field>
+            <field name="phone">+7788990011</field>
+        </record>
+
+        <record id="partner_demo_10" model="res.partner">
+            <field name="name">Henry Irving</field>
+            <field name="email">henry.irving@example.com</field>
+            <field name="phone">+8899001122</field>
+        </record>
+
+        <record id="partner_demo_11" model="res.partner">
+            <field name="name">Ivy Jackson</field>
+            <field name="email">ivy.jackson@example.com</field>
+            <field name="phone">+9900112233</field>
+        </record>
+
+        <record id="partner_demo_12" model="res.partner">
+            <field name="name">Jack King</field>
+            <field name="email">jack.king@example.com</field>
+            <field name="phone">+1011121314</field>
+        </record>
+
+        <record id="partner_demo_13" model="res.partner">
+            <field name="name">Karen Lee</field>
+            <field name="email">karen.lee@example.com</field>
+            <field name="phone">+1112131415</field>
+        </record>
+
+        <record id="partner_demo_14" model="res.partner">
+            <field name="name">Leo Martin</field>
+            <field name="email">leo.martin@example.com</field>
+            <field name="phone">+1213141516</field>
+        </record>
+
+        <record id="partner_demo_15" model="res.partner">
+            <field name="name">Mia Nelson</field>
+            <field name="email">mia.nelson@example.com</field>
+            <field name="phone">+1314151617</field>
+        </record>
+
+        <record id="partner_demo_16" model="res.partner">
+            <field name="name">Nina Owens</field>
+            <field name="email">nina.owens@example.com</field>
+            <field name="phone">+1415161718</field>
+        </record>
+
+        <record id="partner_demo_17" model="res.partner">
+            <field name="name">Oscar Perez</field>
+            <field name="email">oscar.perez@example.com</field>
+            <field name="phone">+1516171819</field>
+        </record>
+
+        <record id="partner_demo_18" model="res.partner">
+            <field name="name">Paula Quinn</field>
+            <field name="email">paula.quinn@example.com</field>
+            <field name="phone">+1617181920</field>
+        </record>
+
+        <record id="partner_demo_19" model="res.partner">
+            <field name="name">Quincy Roberts</field>
+            <field name="email">quincy.roberts@example.com</field>
+            <field name="phone">+1718192021</field>
+        </record>
+
+        <record id="partner_demo_20" model="res.partner">
+            <field name="name">Rachel Scott</field>
+            <field name="email">rachel.scott@example.com</field>
+            <field name="phone">+1819202122</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- feedback_snippet_option.xml -->
+<odoo>
+    <template id="feedback_snippet_option" name="Feedback Snippet Option" inherit_id="website.snippets.options">
+        <xpath expr="//div[@data-js='options']" position="inside">
+            <!-- Option để thay đổi màu nền -->
+            <div data-name="background_color" data-tooltip="Background Color">
+                <we-colorpicker string="Màu Nền"
+                                data-select-style="true"
+                                data-css-property="background-color"
+                                data-color-prefix="bg-"/>
+            </div>
+            
+            <!-- Option để thay đổi kiểu nút Submit -->
+            <div data-name="submit_button_style" data-tooltip="Submit Button Style">
+                <select class="o_select" data-option="submit_button_style">
+                    <option value="btn-primary">Primary</option>
+                    <option value="btn-secondary">Secondary</option>
+                    <option value="btn-success">Success</option>
+                    <option value="btn-danger">Danger</option>
+                </select>
+            </div>
+        </xpath>
+    </template>
+</odoo>
