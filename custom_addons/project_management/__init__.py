@@ -1,6 +1,7 @@
 from . import models
 from . import controllers
 from . import wizards
+from . import reports
 
 from odoo import fields
 from datetime import timedelta
@@ -81,7 +82,7 @@ def generate_demo_data(cr, registry):
         for i in range(1, 6):
             project = Project.create({
                 'name': f'Project {i}',
-                'start_date': fields.Date.today() + timedelta(days=random.randint(1, 30)),
+                'start_date': fields.Date.today() + timedelta(days=random.randint(1, 15)) - timedelta(days=random.randint(1, 30)),
                 'end_date': fields.Date.today() + timedelta(days=random.randint(31, 100)),
                 'project_manager': random.choice(User.search(['|', ('login', 'like', 'project_manager_%'), ('login', 'like', 'admin_user_%')]).ids),
                 'developer_ids': [(6, 0, User.search([('login', 'like', 'developer_')], limit=random.randint(2, 10)).ids)],
@@ -126,8 +127,8 @@ def generate_demo_data(cr, registry):
                             'task_type': random.choice(task_types),
                             'dev_id': random.choice(project.developer_ids.ids),
                             'qc_id': random.choice(project.qc_ids.ids),
-                            'dev_deadline': sprint.start_date + timedelta(days=random.randint(1, 5)),
-                            'qc_deadline': sprint.start_date + timedelta(days=random.randint(6, 10)),
+                            'dev_deadline': sprint.start_date + timedelta(days=random.randint(1, 2)),
+                            'qc_deadline': sprint.start_date + timedelta(days=random.randint(3, 5)),
                             'description': f'Description for Task {k} of Sprint {j + 1} of Project {project.id}',
                         })
                         _logger.info('Created task: %s', task.name)

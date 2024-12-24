@@ -26,3 +26,6 @@ cancel_reason_wizard_system,cancel_reason_wizard.system,model_cancel_reason_wiza
 task_return_wizard_qc,task_return_wizard.qc,model_project_task_return_wizard,project_management.group_project_member,1,1,1,1
 task_return_wizard_admin,task_return_wizard.admin,model_project_task_return_wizard,project_management.group_project_admin,1,1,1,1
 task_return_wizard_system,task_return_wizard.system,model_project_task_return_wizard,base.group_system,1,1,1,1
+project_task_report_system,project.task.report.system,model_project_tasks_report,base.group_system,1,1,1,1
+project_task_report_admin,project.task.report.admin,model_project_tasks_report,project_management.group_project_admin,0,0,0,0
+project_task_report_pm,project.task.report.pm,model_project_tasks_report,project_management.group_project_pm,1,0,0,0

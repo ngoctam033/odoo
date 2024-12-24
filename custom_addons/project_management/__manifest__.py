@@ -41,6 +41,8 @@
     'views/cancel_reason_wizard_views.xml',
     'views/request_open_project_views.xml',
     'views/request_close_project_views.xml',
+    'views/report_deadline_urgent_views.xml',
+    'reports/project_task_report_views.xml',
     'views/project_management_views.xml',
   ],
   'demo': [],

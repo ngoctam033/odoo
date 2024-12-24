@@ -9,6 +9,7 @@
         <xpath expr="." position="inside">
             <script type="text/javascript" src="/project_management/static/js/ProjectListController.js"></script>
             <script type="text/javascript" src="/project_management/static/js/MonthYearWidget.js"></script>
+            <script type="text/javascript" src="/project_management/static/js/OnClickWidget.js"></script>
         </xpath>
     </template>
 </odoo>

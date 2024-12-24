@@ -174,7 +174,6 @@
         <field name="name">Project Management</field>
         <field name="res_model">project.management</field>
         <field name="view_mode">kanban,tree,form</field>
-        <field name="domain">[('state', '!=', False)]</field>
         <field name="view_id" ref="view_project_management_kanban"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -190,6 +189,10 @@
     <menuitem id="menu_task" name="Tasks" parent="menu_project_management_root" action="action_task" sequence="40"/>
     <menuitem id="menu_request_open_project" name="Request Open Projects" parent="menu_project_management_root" action="action_request_open_project" sequence="50"/>
     <menuitem id="menu_request_close_project" name="Request Close Projects" parent="menu_project_management_root" action="action_request_close_project" sequence="60"/>
-    <menuitem id="menu_project_management_configuration" name="Configuration" parent="menu_project_management_root" sequence="80"/>
-    <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_configuration" action="action_task_type" sequence="90"/>
+    <menuitem id="menu_project_management_configuration" name="Configuration" parent="menu_project_management_root" sequence="70"/>
+        <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_configuration" action="action_task_type" sequence="80"/>
+    <menuitem id="menu_project_management_report" name="Report" parent="menu_project_management_root" sequence="90" groups="project_management.group_project_pm,project_management.group_project_admin,base.group_system"/>
+        <menuitem id="menu_report_deadline_urgent" name="Report Deadline Urgent" parent="menu_project_management_report" action="action_report_deadline_urgent" sequence="100"/>
+        <menuitem id="menu_project_task_in_sprint_report" name="Project Task In Sprint Report" parent="menu_project_management_report" action="action_project_task_report" sequence="110"/>
+    
 </odoo>

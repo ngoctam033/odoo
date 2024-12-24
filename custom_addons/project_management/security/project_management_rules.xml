@@ -150,6 +150,17 @@
             <field name="perm_write" eval="0"/>
             <field name="perm_create" eval="1"/>
             <field name="perm_unlink" eval="0"/>
+        </record>    
+        <!-- Record Rule: Chỉ cho phép PM xem các báo cáo của dự án mà họ là PM -->
+        <record id="project_task_report_rule_pm" model="ir.rule">
+            <field name="name">Project Task Report: PM Access</field>
+            <field name="model_id" ref="project_management.model_project_tasks_report"/>
+            <field name="domain_force">[('project_manager', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('project_management.group_project_pm'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
         </record>
     </data>
     

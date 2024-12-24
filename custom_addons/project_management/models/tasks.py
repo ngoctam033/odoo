@@ -102,6 +102,11 @@ class Task(models.Model):
                 template.send_mail(rec.id, force_send=True)
 
     @api.model
+    def get_today_context(self):
+        today = fields.Date.today()
+        return {'today': today}
+
+    @api.model
     def update_tasks(self, new_sprint_id, project_id):
         try:
             tasks = self.search([('state', '!=', 'done'), 
