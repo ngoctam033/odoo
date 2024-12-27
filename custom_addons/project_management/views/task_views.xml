@@ -108,4 +108,15 @@
             </p>
         </field>
     </record>
+
+    <!-- Action to open Import Task view -->
+    <record id="action_import_tasks" model="ir.actions.client">
+        <field name="name">Import Tasks</field>
+        <field name="tag">import</field>
+        <field name="target">current</field>
+        <field name="params" eval="{
+            'model': 'import.task',
+            'context': { 'default_model': 'import.task' }
+        }"/>
+    </record>
 </odoo>

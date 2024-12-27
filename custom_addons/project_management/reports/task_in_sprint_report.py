@@ -1,5 +1,9 @@
 from odoo import models, fields, api, tools
 
+import logging
+
+_logger = logging.getLogger(__name__)
+
 class ProjectTaskReport(models.Model):
     _name = 'project.tasks.report'
     _description = 'Project Task Report'
@@ -15,7 +19,6 @@ class ProjectTaskReport(models.Model):
         ('project_manager', 'Project Manager')
     ], string='Role')
     task_id = fields.Many2one('project.tasks', string='Task')
-    task_name = fields.Char(string='Task Name')
     task_state = fields.Selection([
         ('new', 'New'),
         ('dev', 'Developer is working'),
@@ -42,7 +45,6 @@ class ProjectTaskReport(models.Model):
                     t.sprint_id AS sprint_id,
                     'dev' AS role,
                     t.id AS task_id,
-                    t.name AS task_name,
                     t.state AS task_state,
                     COUNT(t.id) OVER (PARTITION BY t.project_id) AS total_tasks,
                     SUM(CASE WHEN t.state = 'new' THEN 1 ELSE 0 END) AS new_tasks,
@@ -64,7 +66,6 @@ class ProjectTaskReport(models.Model):
                     t.sprint_id AS sprint_id,
                     'qc' AS role,
                     t.id AS task_id,
-                    t.name AS task_name,
                     t.state AS task_state,
                     COUNT(t.id) OVER (PARTITION BY t.project_id) AS total_tasks,
                     SUM(CASE WHEN t.state = 'new' THEN 1 ELSE 0 END) AS new_tasks,
@@ -191,3 +192,29 @@ class ProjectTaskReport(models.Model):
         print(action)
 
         return action
+    
+    def action_send_report_email(self):
+        projects = self._get_projects()
+
+        for project in projects:
+            pm = project.project_manager
+            if not pm:
+                continue  # Bỏ qua nếu project không có PM
+
+            # Lấy thống kê task cho project hiện tại
+            # stats = self._get_task_statistics_for_project(project)
+            html_report = "<div><h1>Project Task Report</h1></div>"
+            mitchell_admin = self.env.ref('base.user_admin')
+            context = {
+                'sender': mitchell_admin.name,
+                'sender_mail': mitchell_admin.email,
+                'recipient': pm.name,
+                'recipient_email': pm.email,
+                'project': project.name,
+                'body_html': html_report,
+            }
+            _logger.info(context)
+            # Gửi email cho PM của project
+            template = self.env.ref('project_management.email_template_project_task_report')
+            if template:
+                template.with_context(context).send_mail(self.id, force_send=True)

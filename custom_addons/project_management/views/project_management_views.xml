@@ -27,8 +27,18 @@
                         <page string="Team">
                             <group>
                                 <field name="project_manager"/>
-                                <field name="developer_ids"/>
-                                <field name="qc_ids"/>
+                                <field name="developer_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="email"/>
+                                    </tree>
+                                </field>
+                                <field name="qc_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="email"/>
+                                    </tree>
+                                </field>
                             </group>
                         </page>
                         <page string="Description">
@@ -184,15 +194,31 @@
 
     <!-- Menu Item -->
     <menuitem id="menu_project_management_root" name="Project Management" sequence="10"/>
-    <menuitem id="menu_project_management" name="Projects" parent="menu_project_management_root" action="action_project_management" sequence="20"/>
+    <menuitem id="menu_project_management" name="Projects" parent="menu_project_management_root" 
+                action="action_project_management" sequence="20"/>
     <menuitem id="menu_sprint" name="Sprints" parent="menu_project_management_root" action="action_sprint" sequence="30"/>
     <menuitem id="menu_task" name="Tasks" parent="menu_project_management_root" action="action_task" sequence="40"/>
-    <menuitem id="menu_request_open_project" name="Request Open Projects" parent="menu_project_management_root" action="action_request_open_project" sequence="50"/>
-    <menuitem id="menu_request_close_project" name="Request Close Projects" parent="menu_project_management_root" action="action_request_close_project" sequence="60"/>
+    <menuitem id="menu_request_open_project" name="Request Open Projects" parent="menu_project_management_root" 
+                action="action_request_open_project" sequence="50"/>
+    <menuitem id="menu_request_close_project" name="Request Close Projects" parent="menu_project_management_root" 
+                action="action_request_close_project" sequence="60"/>
     <menuitem id="menu_project_management_configuration" name="Configuration" parent="menu_project_management_root" sequence="70"/>
-        <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_configuration" action="action_task_type" sequence="80"/>
-    <menuitem id="menu_project_management_report" name="Report" parent="menu_project_management_root" sequence="90" groups="project_management.group_project_pm,project_management.group_project_admin,base.group_system"/>
-        <menuitem id="menu_report_deadline_urgent" name="Report Deadline Urgent" parent="menu_project_management_report" action="action_report_deadline_urgent" sequence="100"/>
-        <menuitem id="menu_project_task_in_sprint_report" name="Project Task In Sprint Report" parent="menu_project_management_report" action="action_project_task_report" sequence="110"/>
-    
+        <menuitem id="menu_task_type" name="Task Types" parent="menu_project_management_configuration" action="action_task_type" 
+                    sequence="80"/>
+        <menuitem id="menu_project_members" name="Project Members" parent="menu_project_management_configuration" 
+                    action="action_project_members" sequence="90"/> 
+    <menuitem id="menu_project_management_report" name="Report" parent="menu_project_management_root" sequence="90" 
+                    groups="project_management.group_project_pm,project_management.group_project_admin,base.group_system"/>  
+        <menuitem id="menu_report_deadline_urgent" name="Report Deadline Urgent" parent="menu_project_management_report" 
+                    action="action_report_deadline_urgent" sequence="100"/>
+        <menuitem id="menu_project_task_in_sprint_report" name="Project Task In Sprint Report" 
+                    parent="menu_project_management_report" action="action_project_task_report_wizard" sequence="110"/>
+        <menuitem id="menu_project_deadline_urgent_wizard" name="Report Deadline Urgent XLSX" 
+                    parent="menu_project_management_report" action="action_project_task_report_export_wizard" sequence="120"/>
+        <menuitem id="menu_project_task_in_sprint_report_wizard" name="Report Task In Sprint XLSX"
+                    parent="menu_project_management_report" action="action_project_task_in_sprint_report_wizard" sequence="120"/>
+    <menuitem id="menu_import_root" name="Import" parent="menu_project_management_root" 
+                    groups="project_management.group_project_admin,base.group_system" sequence="120"/>
+        <menuitem id="menu_import_task" name="Import Task" parent="menu_import_root" action="action_import_tasks" sequence="130"/> 
+
 </odoo>

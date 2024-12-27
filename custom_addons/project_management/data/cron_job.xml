@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Cron Job to send project task report email every minute -->
+        <record id="ir_cron_send_project_task_report_email" model="ir.cron">
+            <field name="name">Send Project Task Report Email</field>
+            <field name="model_id" ref="project_management.model_project_management"/>
+            <field name="state">code</field>
+            <field name="code">model.generate_overview_report()</field>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">weeks</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=2, minute=0, second=0) + relativedelta(weekday=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

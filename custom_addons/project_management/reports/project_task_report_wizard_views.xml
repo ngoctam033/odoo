@@ -1,0 +1,76 @@
+<odoo>
+    <record id="view_project_task_report_wizard_form" model="ir.ui.view">
+        <field name="name">project.task.report.wizard.form</field>
+        <field name="model">project.task.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Project Task Report Wizard">
+                <group>
+                    <field name="date_from" widget="month_year_picker"/>
+                    <field name="date_to" widget="month_year_picker"/>
+                    <field name="project_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button string="View Report" type="object" name="action_open_report" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_project_task_report_export_wizard_form" model="ir.ui.view">
+        <field name="name">project.task.report.export.wizard.form</field>
+        <field name="model">project.task.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Report Deadline Urgent XLSX">
+                <group>
+                    <field name="project_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button string="Export" type="object" name="action_export_report" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_project_task_in_sprint_report_wizard_form" model="ir.ui.view">
+        <field name="name">project.task.in.sprint.report.wizard.form</field>
+        <field name="model">project.task.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Report Task In Sprint XLSX">
+                <group>
+                    <field name="project_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button string="Export" type="object" name="action_export_task_in_sprint_report" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_task_report_wizard" model="ir.actions.act_window">
+        <field name="name">Project Task Report Wizard</field>
+        <field name="res_model">project.task.report.wizard</field>
+        <field name="view_id" ref="view_project_task_report_wizard_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_project_task_report_export_wizard" model="ir.actions.act_window">
+        <field name="name">Report Deadline Urgent XLSX</field>
+        <field name="res_model">project.task.report.wizard</field>
+        <field name="view_id" ref="view_project_task_report_export_wizard_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_project_task_in_sprint_report_wizard" model="ir.actions.act_window">
+        <field name="name">Report Task In Sprint XLSX</field>
+        <field name="res_model">project.task.report.wizard</field>
+        <field name="view_id" ref="view_project_task_in_sprint_report_wizard_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -9,7 +9,7 @@
   'maintainer': 'BAP Solutions',
   'summary': 'Test',
   "description": """Try to test""",
-  'depends': ['base', 'mail'],
+  'depends': ['base', 'mail', 'base_import', 'report_xlsx'],
   'data': [
     # security
     'security/project_management_category.xml',
@@ -28,6 +28,9 @@
     # mail server action
     'data/mail_server.xml',
 
+    #cron job
+    'data/cron_job.xml',
+
     # mail template
     'data/mail_templates.xml',
 
@@ -43,6 +46,8 @@
     'views/request_close_project_views.xml',
     'views/report_deadline_urgent_views.xml',
     'reports/project_task_report_views.xml',
+    'reports/project_task_report_wizard_views.xml',
+    'views/member_views.xml',
     'views/project_management_views.xml',
   ],
   'demo': [],

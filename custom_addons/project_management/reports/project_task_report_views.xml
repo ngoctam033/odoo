@@ -10,7 +10,6 @@
                 <field name="project_id"/>
                 <field name="sprint_id"/>
                 <field name="task_id"/>
-                <field name="task_name"/>
                 <field name="task_state"/>
                 <field name="total_tasks" widget="on_click" options="{'model': 'project.tasks.report', 'method': 'show_project_tasks'}"/>
                 <field name="role"/>
@@ -33,7 +32,6 @@
                     <field name="project_id"/>
                     <field name="sprint_id"/>
                     <field name="task_id"/>
-                    <field name="task_name"/>
                     <field name="task_state"/>
                     <field name="total_tasks"/>
                     <field name="role"/>

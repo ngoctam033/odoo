@@ -131,4 +131,49 @@
             ]]>
         </field>
     </record>
+
+        <!-- Mail template để thông báo khi user được join vào một dự án -->
+    <record id="email_template_project_join_notification" model="mail.template">
+        <field name="name">Project Join Notification</field>
+        <field name="model_id" ref="project_management.model_project_management"/>
+        <field name="subject">You have been added to the project: ${object.name}</field>
+        <field name="email_from">${ctx.get('sender_email')}</field>
+        <field name="email_to">${ctx.get('recipient_email')}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+            <p>Dear ${ctx.get('recipient').name},</p>
+            <p>You have been added to the project ${object.name} as a ${ctx.get('role')}.</p>
+            <p>Project Details:</p>
+            <ul>
+                <li>Project Code: ${object.project_code}</li>
+                <li>Project Name: ${object.name}</li>
+                <li>Start Date: ${object.start_date}</li>
+                <li>End Date: ${object.end_date}</li>
+                <li>Status: ${object.state}</li>
+            </ul>
+            <p>Best regards,</p>
+            <p>${ctx.get('sender').name}</p>
+            ]]>
+        </field>
+    </record>
+        <!-- Email Template for Project Task Report -->
+    <record id="email_template_project_task_report" model="mail.template">
+        <field name="name">Project Task Report</field>
+        <field name="model_id" ref="project_management.model_project_management"/>
+        <field name="subject">Project Task Report for ${ctx.get('project')}</field>
+        <field name="email_from">${ctx.get('sender_mail')}</field>
+        <field name="email_to">${ctx.get('recipient_email')}</field>
+        <field name="auto_delete">False</field>
+        <field name="body_html">
+            <![CDATA[
+            <p>Hello ${ctx.get('recipient')},</p>
+            <p>Please find below the task report for the project: ${ctx.get('project')}.</p>
+            ${ctx.get('body_html')|safe}
+            <p>Best regards,</p>
+            <p>${ctx.get('sender').name}</p>
+            ]]>
+        </field>
+    </record>
+    <!-- ${ctx.get('body_html')} -->
 </odoo>

@@ -29,3 +29,11 @@ task_return_wizard_system,task_return_wizard.system,model_project_task_return_wi
 project_task_report_system,project.task.report.system,model_project_tasks_report,base.group_system,1,1,1,1
 project_task_report_admin,project.task.report.admin,model_project_tasks_report,project_management.group_project_admin,0,0,0,0
 project_task_report_pm,project.task.report.pm,model_project_tasks_report,project_management.group_project_pm,1,0,0,0
+import_task_admin,import.task.system,model_import_task,base.group_system,1,0,1,0
+import_task_user,import.task.admin,model_import_task,project_management.group_project_admin,1,0,1,0
+project_task_report_wizard_system,project.task.report.wizard.system,model_project_task_report_wizard,base.group_system,1,1,1,1
+project_task_report_wizard_admin,project.task.report.wizard.admin,model_project_task_report_wizard,project_management.group_project_admin,1,1,1,1
+project_task_report_wizard_pm,project.task.report.wizard.pm,model_project_task_report_wizard,project_management.group_project_pm,1,1,1,1
+project_deadline_urgent_wizard_system,project.deadline.urgent.wizard.system,model_project_task_report_wizard,base.group_system,1,1,1,1
+project_deadline_urgent_wizard_admin,project.deadline.urgent.wizard.admin,model_project_task_report_wizard,project_management.group_project_admin,1,1,1,1
+project_deadline_urgent_wizard_pm,project.deadline.urgent.wizard.pm,model_project_task_report_wizard,project_management.group_project_pm,1,1,1,1

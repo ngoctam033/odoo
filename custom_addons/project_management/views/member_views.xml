@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Existing code... -->
+
+    <!-- Tree View for Project Members -->
+    <record id="view_project_member_tree" model="ir.ui.view">
+        <field name="name">project.member.tree</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <tree string="Project Members">
+                <field name="name"/>
+                <field name="role"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Project Members -->
+    <record id="view_project_member_form" model="ir.ui.view">
+        <field name="name">project.member.form</field>
+        <field name="model">res.users</field>
+        <field name="arch" type="xml">
+            <form string="Project Member">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="role"/>
+                        <field name="email"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open Project Members view -->
+    <record id="action_project_members" model="ir.actions.act_window">
+        <field name="name">Project Members</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_project_member_tree"/>
+        <field name="view_ids" eval="[
+            (5, 0, 0), 
+            (0, 0, {
+            'view_mode': 'tree', 
+            'view_id': ref('project_management.view_project_member_tree')
+            }), 
+            (0, 0, {
+            'view_mode': 'form', 
+            'view_id': ref('project_management.view_project_member_form')
+            })
+        ]"/>
+        <field name="domain">[('role', '!=', False)]</field>
+    </record>
+</odoo>
