@@ -5,7 +5,7 @@
         <field name="smtp_host">smtp.gmail.com</field>
         <field name="smtp_port">465</field>
         <field name="smtp_user">nguyenngoctam0332003@gmail.com</field>
-        <field name="smtp_pass">ixbb jmpt vukl tqsu</field> <!-- Sử dụng mật khẩu ứng dụng -->
+        <field name="smtp_pass"></field> <!-- Sử dụng mật khẩu ứng dụng -->
         <field name="smtp_encryption">ssl</field>
         <field name="smtp_debug">True</field>
         <field name="sequence">10</field>
